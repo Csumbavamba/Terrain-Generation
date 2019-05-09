@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLoader.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TextLabel.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioQueue.cpp">
+      <Filter>Source\Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSound.cpp">
+      <Filter>Source\Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh_Pyramid.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh_Cube.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh2D_Quad.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh_Sphere.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMap.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh_Model.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeMap.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source\Engine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider_Sphere.cpp">
+      <Filter>Source\Engine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider_Box2D.cpp">
+      <Filter>Source\Engine\Colliders</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Button.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Text.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Image.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMenu.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
+    <ClCompile Include="StartMenuScene.cpp">
+      <Filter>Source\3D Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Source\3D Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioEngine.cpp">
+      <Filter>Source\Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioSystem.cpp">
+      <Filter>Source\Engine\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Application.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseMenu.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_InputField.cpp">
+      <Filter>Source\Engine\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation2D.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator2D.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderLoader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TextLabel.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioQueue.h">
+      <Filter>Header Files\Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSound.h">
+      <Filter>Header Files\Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_Pyramid.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_Cube.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh2D_Quad.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_Sphere.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMap.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_Model.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeMap.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Engine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider_Sphere.h">
+      <Filter>Header Files\Engine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider_Box2D.h">
+      <Filter>Header Files\Engine\Colliders</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Button.h">
+      <Filter>Header Files\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Text.h">
+      <Filter>Header Files\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Image.h">
+      <Filter>Header Files\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMenu.h">
+      <Filter>Header Files\3D Game</Filter>
+    </ClInclude>
+    <ClInclude Include="StartMenuScene.h">
+      <Filter>Header Files\3D Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Header Files\3D Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioEngine.h">
+      <Filter>Header Files\Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem.h">
+      <Filter>Header Files\Engine\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="IntroScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Application.h">
+      <Filter>Header Files\3D Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseMenu.h">
+      <Filter>Header Files\3D Game</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_InputField.h">
+      <Filter>Header Files\Engine\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation2D.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator2D.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FragmentShader.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="VertexShader.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Text.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Text.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Phong-FragmentShader.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Phong-VertexShader.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Rim-FragmentShader.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Rim-VertexShader.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Reflection-FS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Reflection-VS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="SkyBox-VS.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="SkyBox-FS.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Model.fs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+    <None Include="Model.vs">
+      <Filter>Resources\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{3f566b63-878d-462c-9ff5-a9cc37d1c6a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{660d9068-46b2-4749-aaa8-e27141577c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{2dc7e093-37fb-4811-b1fa-34d60859fee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders">
+      <UniqueIdentifier>{008caf02-9130-4873-a94b-a262fbe8e3c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{7cd1a395-fd09-4f01-92cd-84cce1427189}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine">
+      <UniqueIdentifier>{a0314b9f-9be2-4145-8b23-16da1920251a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stash">
+      <UniqueIdentifier>{ea079b85-9f6e-4521-860f-f5b29d801cd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Colliders">
+      <UniqueIdentifier>{e6f35242-4d87-4c0b-b8cb-ee73e81118a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Colliders">
+      <UniqueIdentifier>{3d8f2dc9-8a7b-4a45-9bd3-134a94bdb5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Sound">
+      <UniqueIdentifier>{5928fcdc-27da-4dd0-9366-cae36facb191}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Sound">
+      <UniqueIdentifier>{ccb6f7c7-58e3-4b05-a9b5-7277158a1774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\3D Game">
+      <UniqueIdentifier>{6caa5520-f781-4f14-b2cb-b6ca80cd34cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3D Game">
+      <UniqueIdentifier>{7bac1137-f9ac-45fc-a72c-f894c5d850b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Meshes">
+      <UniqueIdentifier>{cabb65a7-41f4-4ff3-85ce-63ceba7da543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Meshes">
+      <UniqueIdentifier>{8708bed2-a2b0-424f-90e2-df31a6ec7449}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\UI">
+      <UniqueIdentifier>{809840e1-e3dd-4c9d-bdd9-2f337f51b486}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\UI">
+      <UniqueIdentifier>{c5d2962d-0bda-481c-bbf7-de8a75150da6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\3D Game\Scenes">
+      <UniqueIdentifier>{330c8296-9cf4-44ef-b91f-49b9cf45b688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\3D Game\Scene">
+      <UniqueIdentifier>{0289ea81-6541-4317-87de-c6e02d512979}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

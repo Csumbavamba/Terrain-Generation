@@ -1,0 +1,45 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Precompiled Headers
+*.gch
+*.pch
+
+
+# Fortran module files
+*.mod
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.as
+
+# Executables
+*.exe
+*.out
+*.app
+
+# VS files
+*.db
+*.ipch
+*.opendb
+
+3D Basics/Output\.txt
