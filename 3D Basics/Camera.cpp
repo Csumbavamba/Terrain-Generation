@@ -6,20 +6,15 @@
 #include "Utility.h"
 
 
-Camera::Camera()
-{
-	viewMode = ORTOGRAPHIC;
-
-}
-
 Camera::Camera(ViewMode viewMode)
 {
 	this->viewMode = viewMode;
+	
+	cameraPosition = glm::vec3(0.0f, 1.0f, 10.0f);
+	cameraLookDirection = glm::vec3(0.0f, 0.0f, -1.0f);
+	cameraUpDirection = glm::vec3(0.0f, 1.0f, 0.0f);
 
-	cameraPosition = glm::vec3(0.0f, 10.0f, 0.0f);
-	cameraLookDirection = glm::vec3(0.0f, -1.0f, 0.0f);
-	cameraUpDirection = glm::vec3(0.0f, 0.0f, 1.0f);
-
+	fieldOfView = 120.0f;
 }
 
 
@@ -86,7 +81,7 @@ glm::mat4 Camera::GetPV() const
 
 void Camera::CreatePerspectiveProjection()
 {
-	projectionMatrix = (glm::perspective(120.0f, (float)Utility::GetScreenWidth() / (float)Utility::GetScreenHeight(), 0.1f, 15000.0f));
+	projectionMatrix = (glm::perspective(fieldOfView, (float)Utility::GetScreenWidth() / (float)Utility::GetScreenHeight(), 0.1f, 15000.0f));
 }
 
 void Camera::CreateOrthographicProjection()
@@ -134,17 +129,28 @@ glm::vec3 Camera::GetCameraUpDirection() const
 	return cameraUpDirection;
 }
 
+float Camera::GetFieldOfView() const
+{
+	return fieldOfView;
+}
+
+void Camera::SetFieldOfView(float fieldOfView)
+{
+	this->fieldOfView = fieldOfView;
+
+	// Recalculate the field of view
+	CreatePerspectiveProjection();
+}
+
 void Camera::RotateAroundObject(glm::vec3 objectLocation, float distanceFromObject, float deltaTime)
 {
 	timeElapsed += deltaTime;
 
 	float xMovement = sin(timeElapsed) * distanceFromObject;
 	float zMovement = cos(timeElapsed) * distanceFromObject;
-	float cameraY = 0.5f * distanceFromObject;
 
-	cameraUpDirection = glm::vec3(0.0, 0.0, 1.0);
-	cameraPosition = glm::vec3(objectLocation.x + xMovement, cameraY, objectLocation.z + zMovement);
-	cameraLookDirection = objectLocation;
+	cameraPosition = glm::vec3(objectLocation.x + xMovement, cameraPosition.y, objectLocation.z + zMovement);
+	cameraLookDirection = objectLocation - cameraPosition;
 }
 
 void Camera::FollowObject(glm::vec3 objectLocation)

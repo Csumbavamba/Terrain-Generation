@@ -9,7 +9,7 @@
 StartMenuScene::StartMenuScene()
 {
 	startMenu = new GameMenu(mainCamera);
-	backgroundImage = new UI_Image(mainCamera, "Sprites/DwarfBackground2.jpg", Utility::GetScreenSize());
+	backgroundImage = new UI_Image(mainCamera, "Sprites/DwarfBackground2.jpg", Utility::GetScreenSize() / mainCamera->GetFieldOfView());
 
 
 	sceneName = "StartMenuScene"; // TODO Create method to get this from file

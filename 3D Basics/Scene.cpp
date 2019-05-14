@@ -6,7 +6,7 @@
 
 Scene::Scene()
 {
-	this->mainCamera = new Camera(ORTOGRAPHIC);
+	this->mainCamera = new Camera(PERSPECTIVE);
 }
 
 Scene::~Scene()

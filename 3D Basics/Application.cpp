@@ -73,7 +73,7 @@ Application * Application::GetInstance()
 void Application::PlayGame(int argc, char ** argv)
 {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
+	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA | GLUT_MULTISAMPLE);
 	glutInitWindowPosition(0, 0);
 	glutInitWindowSize(1024, 768);
 	glutCreateWindow("Dwarf Game II");
@@ -90,11 +90,16 @@ void Application::PlayGame(int argc, char ** argv)
 
 	//// Enable Depth for Rendering -- See if that causes error
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_DEPTH_CLAMP); // TODO - see what does this do
 	glDepthFunc(GL_LESS);
 
 	// Blend between textures
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// Enable Antialiasing
+	glutSetOption(GLUT_MULTISAMPLE, 8);
+	glEnable(GL_MULTISAMPLE);
 
 	GetInstance()->Initialise();
 

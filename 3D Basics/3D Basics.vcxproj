@@ -150,10 +150,13 @@
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovingCube.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="StartMenuScene.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Mesh_Terrain.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UI_Image.cpp" />
     <ClCompile Include="Collider_Box2D.cpp" />
@@ -190,10 +193,13 @@
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="IntroScene.h" />
+    <ClInclude Include="MovingCube.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="StartMenuScene.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Mesh_Terrain.h" />
+    <ClInclude Include="Terrain.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="UI_Image.h" />
     <ClInclude Include="Collider_Box2D.h" />

@@ -2,6 +2,8 @@
 #include "Input.h"
 #include "PauseMenu.h"
 #include "Time.h"
+#include "Terrain.h"
+#include "Camera.h"
 
 GameScene::GameScene()
 {
@@ -10,7 +12,11 @@ GameScene::GameScene()
 	pauseMenu = new PauseMenu(mainCamera);
 	pauseMenu->SetActive(false);
 
+	terrain = new Terrain(mainCamera);
+
+	gameObjects.push_back(terrain);
 	gameObjects.push_back(pauseMenu);
+	
 
 }
 
@@ -18,6 +24,7 @@ void GameScene::Update(float deltaTime)
 {
 	Scene::Update(deltaTime);
 
+	// Pause Input
 	ProcessPauseInput();
 }
 

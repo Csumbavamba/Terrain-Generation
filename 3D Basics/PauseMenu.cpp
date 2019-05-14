@@ -7,7 +7,7 @@
 #include "Input.h"
 #include "SceneManager.h"
 #include "Scene.h"
-
+#include "Camera.h"
 
 PauseMenu::PauseMenu(Camera * mainCamera)
 {
@@ -17,7 +17,7 @@ PauseMenu::PauseMenu(Camera * mainCamera)
 	returnButton = new UI_Button("RETURN", glm::vec2(0.0f, 100.0f));
 	mainMenuButton = new UI_Button("MAIN MENU", glm::vec2(0.0f, -100.0f));
 
-	backgroundImage = new UI_Image(mainCamera, "Sprites/DwarfBackground2.jpg", Utility::GetScreenSize());
+	backgroundImage = new UI_Image(mainCamera, "Sprites/DwarfBackground2.jpg", Utility::GetScreenSize() / camera->GetFieldOfView());
 	clickSound = new AudioSound("Audio/Click.wav", DEFAULT);
 	swapSound = new AudioSound("Audio/Click2.wav", DEFAULT);
 

@@ -3,6 +3,7 @@
 #include "Scene.h"
 
 class PauseMenu;
+class Terrain;
 
 class GameScene :
 	public Scene
@@ -19,5 +20,6 @@ public:
 private:
 
 	PauseMenu * pauseMenu = NULL;
+	Terrain* terrain = NULL;
 };
 

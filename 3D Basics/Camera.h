@@ -13,7 +13,6 @@ enum ViewMode
 class Camera
 {
 public:
-	Camera();
 	Camera(ViewMode viewMode);
 	~Camera();
 
@@ -33,6 +32,9 @@ public:
 	glm::vec3 GetCameraLookDirection() const;
 	glm::vec3 GetCameraUpDirection() const;
 
+	float GetFieldOfView() const;
+	void SetFieldOfView(float fieldOfView);
+
 	void RotateAroundObject(glm::vec3 objectLocation, float distanceFromObject, float deltaTime);
 	void FollowObject(glm::vec3 objectLocation);
 
@@ -49,6 +51,7 @@ private:
 
 	ViewMode viewMode;
 	float timeElapsed;
+	float fieldOfView;
 
 	// Stored matricies
 	glm::mat4 viewMatrix;

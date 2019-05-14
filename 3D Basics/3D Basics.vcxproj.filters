@@ -122,6 +122,13 @@
     <ClCompile Include="Animator2D.cpp">
       <Filter>Source\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh_Terrain.cpp">
+      <Filter>Source\Engine\Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingCube.cpp" />
+    <ClCompile Include="Terrain.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -247,6 +254,13 @@
     </ClInclude>
     <ClInclude Include="Animator2D.h">
       <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_Terrain.h">
+      <Filter>Header Files\Engine\Meshes</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingCube.h" />
+    <ClInclude Include="Terrain.h">
+      <Filter>Header Files\3D Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
