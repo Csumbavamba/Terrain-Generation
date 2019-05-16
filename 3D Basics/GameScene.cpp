@@ -5,6 +5,7 @@
 #include "Terrain.h"
 #include "Camera.h"
 #include "MovingCube.h"
+#include "Star_2D.h"
 
 GameScene::GameScene()
 {
@@ -16,9 +17,12 @@ GameScene::GameScene()
 	terrain = new Terrain(mainCamera);
 	movingCube = new MovingCube(mainCamera);
 	movingCube->SetTerrain(terrain);
+	star = new Star_2D(mainCamera);
+	star->SetTerrain(terrain);
 
 	gameObjects.push_back(terrain);
 	gameObjects.push_back(movingCube);
+	gameObjects.push_back(star);
 	gameObjects.push_back(pauseMenu);
 	
 

@@ -43,6 +43,7 @@ private:
 
 	std::map<std::string, GLuint> savedVertexShaders;
 	std::map<std::string, GLuint> savedFragmentShaders;
+	std::map<std::string, GLuint> savedGeometryShaders;
 	std::map<std::string, GLuint> savedPrograms;
 
 

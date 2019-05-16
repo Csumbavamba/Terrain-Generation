@@ -8,25 +8,18 @@
 #include "Dependencies\glm\gtc\type_ptr.hpp"
 
 class GameObject;
-class Texture;
 class Camera;
 
-// TODO Create UI Mesh
-class Mesh
+
+class Geometry_Star
 {
 public:
-	Mesh();
-	virtual ~Mesh();
+	Geometry_Star(GameObject * owner);
+	virtual ~Geometry_Star();
 
-	virtual void Initialise() = 0;
-
-	virtual void Render(Camera * camera, GLuint program);
-
-	virtual void ReflectionRender(Camera * camera, GLuint program, GLuint textureID);
-
+	virtual void Initialise();
+	virtual void Render(Camera* camera, GLuint program);
 	virtual void Update();
-
-	Texture * GetTexture() const;
 
 protected:
 	GLuint VBO;
@@ -35,14 +28,11 @@ protected:
 
 	// Calculations for rendering and updating
 	void CalculateModelMatrix();
+
 	glm::mat4 PVM;
 	glm::mat4 modelMatrix;
-
 	glm::vec3 CameraPosition;
 
-	GameObject * owner = NULL;
-	Texture * texture = NULL;
-
-	int indexCount;
+	GameObject* owner = NULL;
 };
 

@@ -129,6 +129,8 @@
     <ClCompile Include="Terrain.cpp">
       <Filter>Source\3D Game</Filter>
     </ClCompile>
+    <ClCompile Include="Geometry_Star.cpp" />
+    <ClCompile Include="Star_2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -262,6 +264,8 @@
     <ClInclude Include="Terrain.h">
       <Filter>Header Files\3D Game</Filter>
     </ClInclude>
+    <ClInclude Include="Geometry_Star.h" />
+    <ClInclude Include="Star_2D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FragmentShader.fs">

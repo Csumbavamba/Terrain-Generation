@@ -167,18 +167,24 @@ GLuint ShaderLoader::CreateProgram(const char* vertexShaderFilename,
 GLuint ShaderLoader::CreateProgram(const char* VertexShaderFilename, const char* GeometryShaderFileName, const char* FragmentShaderFilename)
 {
 	// Check if the shaders exist
-	GLuint program;
 	GLuint vertexShader;
 	GLuint fragmentShader;
+	GLuint geometryShader;
+	GLuint program;
+	
 
 	std::string vertexShaderCode;
 	std::string fragmentShaderCode;
+	std::string geometryShaderCode;
 
 	std::map<std::string, GLuint>::iterator vertexIterator;
 	std::map<std::string, GLuint>::iterator fragmentIterator;
+	std::map<std::string, GLuint>::iterator geometryIterator;
 	std::map<std::string, GLuint>::iterator programIterator;
+	
 
 	std::string programName = VertexShaderFilename;
+	programName.append(GeometryShaderFileName);
 	programName.append(FragmentShaderFilename);
 
 	programIterator = savedPrograms.find(programName);
@@ -187,31 +193,47 @@ GLuint ShaderLoader::CreateProgram(const char* VertexShaderFilename, const char*
 	if (programIterator == savedPrograms.end())
 	{
 		// Search for already existing vertex shader
-		vertexIterator = savedVertexShaders.find(vertexShaderFilename);
+		vertexIterator = savedVertexShaders.find(VertexShaderFilename);
 
 		// If vertex shader exist
 		if (vertexIterator == savedVertexShaders.end())
 		{
 			// Create vertex shader
-			vertexShaderCode = ReadShader(vertexShaderFilename); //read the shader files and save the code
+			vertexShaderCode = ReadShader(VertexShaderFilename); //read the shader files and save the code
 			vertexShader = CreateShader(GL_VERTEX_SHADER, vertexShaderCode, "vertex shader");
-			savedVertexShaders[vertexShaderFilename] = vertexShader;
+			savedVertexShaders[VertexShaderFilename] = vertexShader;
 		}
 		else
 		{
 			vertexShader = vertexIterator->second; // = savedVertex
 		}
 
+		// Search for already existing geometry shader
+		geometryIterator = savedGeometryShaders.find(GeometryShaderFileName);
+
+		// If vertex shader exist
+		if (geometryIterator == savedGeometryShaders.end())
+		{
+			// Create vertex shader
+			geometryShaderCode = ReadShader(GeometryShaderFileName); //read the shader files and save the code
+			geometryShader = CreateShader(GL_GEOMETRY_SHADER, geometryShaderCode, "geometry shader");
+			savedGeometryShaders[GeometryShaderFileName] = geometryShader;
+		}
+		else
+		{
+			geometryShader = geometryIterator->second; // = savedVertex
+		}
+
 		// Search for already existing fragment shader
-		fragmentIterator = savedFragmentShaders.find(fragmentShaderFilename);
+		fragmentIterator = savedFragmentShaders.find(FragmentShaderFilename);
 
 		// If fragment shader exist doesn't exist
 		if (fragmentIterator == savedFragmentShaders.end())
 		{
 			// Create fragment shader
-			fragmentShaderCode = ReadShader(fragmentShaderFilename); //read the shader files and save the code
+			fragmentShaderCode = ReadShader(FragmentShaderFilename); //read the shader files and save the code
 			fragmentShader = CreateShader(GL_FRAGMENT_SHADER, fragmentShaderCode, "fragment shader");
-			savedFragmentShaders[fragmentShaderFilename] = fragmentShader;
+			savedFragmentShaders[FragmentShaderFilename] = fragmentShader;
 		}
 		else
 		{
@@ -223,6 +245,7 @@ GLuint ShaderLoader::CreateProgram(const char* VertexShaderFilename, const char*
 		//create the program handle, attatch the shaders and link it
 		program = glCreateProgram();
 		glAttachShader(program, vertexShader);
+		glAttachShader(program, geometryShader);
 		glAttachShader(program, fragmentShader);
 
 		glLinkProgram(program);

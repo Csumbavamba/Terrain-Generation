@@ -149,6 +149,7 @@
     <ClCompile Include="AudioSound.cpp" />
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Geometry_Star.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovingCube.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="StartMenuScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Mesh_Terrain.cpp" />
+    <ClCompile Include="Star_2D.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UI_Image.cpp" />
@@ -192,6 +194,7 @@
     <ClInclude Include="AudioSystem.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Geometry_Star.h" />
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="MovingCube.h" />
     <ClInclude Include="PauseMenu.h" />
@@ -199,6 +202,7 @@
     <ClInclude Include="StartMenuScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Mesh_Terrain.h" />
+    <ClInclude Include="Star_2D.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="UI_Image.h" />

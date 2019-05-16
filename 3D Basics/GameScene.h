@@ -5,6 +5,7 @@
 class PauseMenu;
 class Terrain;
 class MovingCube;
+class Star_2D;
 
 class GameScene :
 	public Scene
@@ -23,5 +24,6 @@ private:
 	PauseMenu * pauseMenu = NULL;
 	Terrain* terrain = NULL;
 	MovingCube* movingCube = NULL;
+	Star_2D* star = NULL;
 };
 
