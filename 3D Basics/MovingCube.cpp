@@ -3,7 +3,7 @@
 #include "Terrain.h"
 #include "Input.h"
 #include "Camera.h"
-
+#include "Texture.h"
 
 MovingCube::MovingCube(Camera* mainCamera)
 {
@@ -11,6 +11,8 @@ MovingCube::MovingCube(Camera* mainCamera)
 
 	mesh = new Mesh_Cube(this);
 	speed = 15.0f;
+
+	mesh->GetTexture()->SetTexturePath("Sprites/Rock.png");
 }
 
 

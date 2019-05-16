@@ -27,16 +27,16 @@ void TessalatedQuad::Initialise()
 {
 	mesh->Initialise();
 
-	// Move Quad up
-	transform.position.y = terrain->GetHeightAt(transform.position.x, transform.position.z) + transform.scale.y * 2.0f;
+	// Move Quad to position
+	transform.scale *= 3.0f;
+	transform.position.y = terrain->GetHeightAt(transform.position.x, transform.position.z) + transform.scale.y;
 	transform.position.x -= 3.0f;
+	transform.position.z -= 3.0f;
 }
 
 void TessalatedQuad::Render(GLuint program)
 {
-	glDisable(GL_CULL_FACE);
 	mesh->Render(camera, tessalationProgram);
-	glEnable(GL_CULL_FACE);
 }
 
 void TessalatedQuad::Update(float deltaTIme)

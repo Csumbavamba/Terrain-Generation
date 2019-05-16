@@ -11,11 +11,13 @@ Tess2D_Quad::Tess2D_Quad(GameObject* owner)
 
 void Tess2D_Quad::Initialise()
 {
-	GLfloat points[] = { 
+	GLfloat points[] = {
 		-1.0f, -1.0f, 0.0f,	// Bottom left
-		1.0f, -1.0f, 0.0f,	// Bottom right
-		1.0f, 1.0f, 0.0f,	// Top right
-		-1.0, 1.0, 0.0f };	// Top Left
+		-1.0, 1.0, 0.0f,	// Top Left
+		1.0f, 1.0f, 0.0f, 	// Top right
+		1.0f, -1.0f, 0.0f};	// Bottom right
+		
+		
 	
 	glPatchParameteri(GL_PATCH_VERTICES, 4); //comment for tri patch
 	

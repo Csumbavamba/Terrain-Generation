@@ -22,10 +22,14 @@ public:
 
 private:
 
+	void CreateFrameBuffer();
+
 	PauseMenu * pauseMenu = NULL;
 	Terrain* terrain = NULL;
 	MovingCube* movingCube = NULL;
 	Star_2D* star = NULL;
 	TessalatedQuad* tessQuad = NULL;
+
+	GLuint frameBuffer;
 };
 
