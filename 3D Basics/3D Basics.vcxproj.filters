@@ -265,46 +265,49 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="FragmentShader.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="VertexShader.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Text.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Text.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Phong-FragmentShader.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Phong-VertexShader.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Rim-FragmentShader.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Rim-VertexShader.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Reflection-FS.fs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="Reflection-VS.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="SkyBox-VS.vs">
-      <Filter>Resources\Shaders</Filter>
-    </None>
-    <None Include="SkyBox-FS.fs">
-      <Filter>Resources\Shaders</Filter>
+      <Filter>Resources\Shaders\Fragment</Filter>
     </None>
     <None Include="Model.fs">
-      <Filter>Resources\Shaders</Filter>
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Phong-FragmentShader.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Reflection-FS.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Rim-FragmentShader.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="SkyBox-FS.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Text.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
     </None>
     <None Include="Model.vs">
-      <Filter>Resources\Shaders</Filter>
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="Phong-VertexShader.vs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="Reflection-VS.vs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="Rim-VertexShader.vs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="SkyBox-VS.vs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="Text.vs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="VertexShader.vs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="GeometryShader.gs">
+      <Filter>Resources\Shaders\Vertex</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +367,15 @@
     </Filter>
     <Filter Include="Header Files\3D Game\Scene">
       <UniqueIdentifier>{0289ea81-6541-4317-87de-c6e02d512979}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Vertex">
+      <UniqueIdentifier>{5fe4a290-8792-42a3-b86a-6c626490da0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Fragment">
+      <UniqueIdentifier>{a146649f-9f94-4d81-92fb-68ac6753df17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Geometry">
+      <UniqueIdentifier>{bef1be25-02c8-4056-ad75-6f9997ece452}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

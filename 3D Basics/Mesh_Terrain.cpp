@@ -44,6 +44,7 @@ float Mesh_Terrain::GetHeightAt(float x, float z)
 	int row = (int)floorf(cellZ);
 	int col = (int)floorf(cellX);
 
+
 	// Grab the heights of the cell we are in.
 	float topLeft = heightMap[row * numberOfColumns + col];
 	float topRight = heightMap[row * numberOfColumns + col + 1];
