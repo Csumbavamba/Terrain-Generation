@@ -15,6 +15,8 @@ public:
 	virtual void Update(float deltaTime) override;
 
 	float GetHeightAt(float x, float z) const;
+	float GetWidth() const;
+	float GetDepth() const;
 
 private:
 	Mesh_Terrain* terrain = NULL;

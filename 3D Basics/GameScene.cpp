@@ -4,6 +4,7 @@
 #include "Time.h"
 #include "Terrain.h"
 #include "Camera.h"
+#include "MovingCube.h"
 
 GameScene::GameScene()
 {
@@ -13,8 +14,11 @@ GameScene::GameScene()
 	pauseMenu->SetActive(false);
 
 	terrain = new Terrain(mainCamera);
+	movingCube = new MovingCube(mainCamera);
+	movingCube->SetTerrain(terrain);
 
 	gameObjects.push_back(terrain);
+	gameObjects.push_back(movingCube);
 	gameObjects.push_back(pauseMenu);
 	
 

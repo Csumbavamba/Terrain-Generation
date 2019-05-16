@@ -18,7 +18,7 @@ public:
 	Mesh_Terrain(GameObject* owner);
 	virtual ~Mesh_Terrain() {};
 
-	virtual void Initialise() override; // Override
+	virtual void Initialise() override;
 
 	float GetHeightAt(float x, float z);
 	float GetWidth() const;
