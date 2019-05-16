@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "MovingCube.h"
 #include "Star_2D.h"
+#include "TessalatedQuad.h"
 
 GameScene::GameScene()
 {
@@ -19,10 +20,13 @@ GameScene::GameScene()
 	movingCube->SetTerrain(terrain);
 	star = new Star_2D(mainCamera);
 	star->SetTerrain(terrain);
+	tessQuad = new TessalatedQuad(mainCamera);
+	tessQuad->SetTerrain(terrain);
 
 	gameObjects.push_back(terrain);
 	gameObjects.push_back(movingCube);
 	gameObjects.push_back(star);
+	gameObjects.push_back(tessQuad);
 	gameObjects.push_back(pauseMenu);
 	
 
@@ -34,6 +38,15 @@ void GameScene::Update(float deltaTime)
 
 	// Pause Input
 	ProcessPauseInput();
+
+	if (Input::GetKeyState('q') == DOWN)
+	{
+		glPolygonMode(GL_FRONT, GL_LINE);
+	}
+	else
+	{
+		glPolygonMode(GL_FRONT, GL_FILL);
+	}
 }
 
 void GameScene::ProcessPauseInput()

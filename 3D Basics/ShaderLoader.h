@@ -20,6 +20,11 @@ public:
 		const char* GeometryShaderFileName,
 		const char* FragmentShaderFilename);
 
+	GLuint CreateProgram(const char* VertexShaderFilename,
+		const char* TessalationControlShaderFileName,
+		const char* TessalationEvaluationShaderFileName,
+		const char* FragmentShaderFilename);
+
 	static void ShutDown();
 
 // Functions
@@ -42,6 +47,8 @@ private:
 	static ShaderLoader * instance;
 
 	std::map<std::string, GLuint> savedVertexShaders;
+	std::map<std::string, GLuint> savedTessControlShaders;
+	std::map<std::string, GLuint> savedTessEvaluationShaders;
 	std::map<std::string, GLuint> savedFragmentShaders;
 	std::map<std::string, GLuint> savedGeometryShaders;
 	std::map<std::string, GLuint> savedPrograms;

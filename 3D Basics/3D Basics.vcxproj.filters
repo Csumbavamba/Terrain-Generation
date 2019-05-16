@@ -125,12 +125,20 @@
     <ClCompile Include="Mesh_Terrain.cpp">
       <Filter>Source\Engine\Meshes</Filter>
     </ClCompile>
-    <ClCompile Include="MovingCube.cpp" />
     <ClCompile Include="Terrain.cpp">
       <Filter>Source\3D Game</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry_Star.cpp" />
-    <ClCompile Include="Star_2D.cpp" />
+    <ClCompile Include="Geometry_Star.cpp">
+      <Filter>Source\Engine\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingCube.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Star_2D.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Tess2D_Quad.cpp" />
+    <ClCompile Include="TessalatedQuad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -260,12 +268,20 @@
     <ClInclude Include="Mesh_Terrain.h">
       <Filter>Header Files\Engine\Meshes</Filter>
     </ClInclude>
-    <ClInclude Include="MovingCube.h" />
     <ClInclude Include="Terrain.h">
       <Filter>Header Files\3D Game</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry_Star.h" />
-    <ClInclude Include="Star_2D.h" />
+    <ClInclude Include="Geometry_Star.h">
+      <Filter>Header Files\Engine\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingCube.h">
+      <Filter>Header Files\3D Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Star_2D.h">
+      <Filter>Header Files\3D Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Tess2D_Quad.h" />
+    <ClInclude Include="TessalatedQuad.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="FragmentShader.fs">
@@ -317,6 +333,18 @@
       <Filter>Resources\Shaders\Vertex</Filter>
     </None>
     <None Include="FragmentGeometry.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="TessalationControl.tc">
+      <Filter>Resources\Shaders\Tessalation</Filter>
+    </None>
+    <None Include="TessalationEvaluation.te">
+      <Filter>Resources\Shaders\Tessalation</Filter>
+    </None>
+    <None Include="VertexTessalation.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="FragmentTessalation.fs">
       <Filter>Resources\Shaders\Fragment</Filter>
     </None>
   </ItemGroup>
@@ -386,6 +414,15 @@
     </Filter>
     <Filter Include="Resources\Shaders\Geometry">
       <UniqueIdentifier>{bef1be25-02c8-4056-ad75-6f9997ece452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\Tessalation">
+      <UniqueIdentifier>{2d0451a3-043e-46c1-ad13-e96eb0a3afb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Geometry">
+      <UniqueIdentifier>{91a30c4a-5295-4071-8920-1a69ddae2a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Geometry">
+      <UniqueIdentifier>{ad5f2caf-0282-4836-ad78-6a0ad3f651cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

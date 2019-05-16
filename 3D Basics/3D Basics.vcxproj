@@ -159,6 +159,8 @@
     <ClCompile Include="Mesh_Terrain.cpp" />
     <ClCompile Include="Star_2D.cpp" />
     <ClCompile Include="Terrain.cpp" />
+    <ClCompile Include="Tess2D_Quad.cpp" />
+    <ClCompile Include="TessalatedQuad.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UI_Image.cpp" />
     <ClCompile Include="Collider_Box2D.cpp" />
@@ -204,6 +206,8 @@
     <ClInclude Include="Mesh_Terrain.h" />
     <ClInclude Include="Star_2D.h" />
     <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Tess2D_Quad.h" />
+    <ClInclude Include="TessalatedQuad.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="UI_Image.h" />
     <ClInclude Include="Collider_Box2D.h" />
@@ -234,6 +238,7 @@
   <ItemGroup>
     <None Include="FragmentGeometry.fs" />
     <None Include="FragmentShader.fs" />
+    <None Include="FragmentTessalation.fs" />
     <None Include="GeometryShader.gs" />
     <None Include="Model.fs" />
     <None Include="Model.vs" />
@@ -245,10 +250,13 @@
     <None Include="Rim-VertexShader.vs" />
     <None Include="SkyBox-FS.fs" />
     <None Include="SkyBox-VS.vs" />
+    <None Include="TessalationControl.tc" />
+    <None Include="TessalationEvaluation.te" />
     <None Include="Text.fs" />
     <None Include="Text.vs" />
     <None Include="VertexGeometry.vs" />
     <None Include="VertexShader.vs" />
+    <None Include="VertexTessalation.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
