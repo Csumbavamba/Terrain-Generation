@@ -16,6 +16,10 @@ public:
 	GLuint CreateProgram(const char* VertexShaderFilename,
 						const char* FragmentShaderFilename);
 
+	GLuint CreateProgram(const char* VertexShaderFilename, 
+		const char* GeometryShaderFileName,
+		const char* FragmentShaderFilename);
+
 	static void ShutDown();
 
 // Functions

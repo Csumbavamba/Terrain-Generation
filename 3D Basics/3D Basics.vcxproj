@@ -228,6 +228,7 @@
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="FragmentGeometry.fs" />
     <None Include="FragmentShader.fs" />
     <None Include="GeometryShader.gs" />
     <None Include="Model.fs" />
@@ -242,6 +243,7 @@
     <None Include="SkyBox-VS.vs" />
     <None Include="Text.fs" />
     <None Include="Text.vs" />
+    <None Include="VertexGeometry.vs" />
     <None Include="VertexShader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
