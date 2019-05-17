@@ -347,6 +347,18 @@
     <None Include="FragmentTessalation.fs">
       <Filter>Resources\Shaders\Fragment</Filter>
     </None>
+    <None Include="InverseColors.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="SharpenColours.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Blur.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="EdgeDetection.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">

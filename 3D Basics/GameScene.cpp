@@ -8,6 +8,7 @@
 #include "Star_2D.h"
 #include "TessalatedQuad.h"
 #include "Utility.h"
+#include "ShaderLoader.h"
 
 #include <iostream>
 
@@ -26,6 +27,8 @@ GameScene::GameScene()
 	tessQuad = new TessalatedQuad(mainCamera);
 	tessQuad->SetTerrain(terrain);
 
+	isPostProcessingEnabled = false;
+
 	gameObjects.push_back(terrain);
 	gameObjects.push_back(movingCube);
 	gameObjects.push_back(star);
@@ -35,6 +38,12 @@ GameScene::GameScene()
 
 	CreateFrameBuffer();
 
+	edgeDetectionProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "EdgeDetection.fs");
+	inverseColorsProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "InverseColors.fs");
+	sharpenProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "SharpenColours.fs");
+	blurProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "Blur.fs");
+	postProcessingProgram = inverseColorsProgram;
+
 }
 
 void GameScene::CreateFrameBuffer()
@@ -43,7 +52,6 @@ void GameScene::CreateFrameBuffer()
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
 
 	// Create Color attachement texture
-	GLuint textureColorBuffer;
 	glGenTextures(1, &textureColorBuffer);
 	glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
 
@@ -54,7 +62,7 @@ void GameScene::CreateFrameBuffer()
 	glBindTexture(GL_TEXTURE_2D, 0); // Unbind buffer
 	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, textureColorBuffer, 0); // Attach it to the framebuffer
 
-																										// Create renderbuffer object for depth attachement
+	// Create renderbuffer object for depth attachement
 	GLuint renderBufferObject;
 	glGenRenderbuffers(1, &renderBufferObject);
 	glBindRenderbuffer(GL_RENDERBUFFER, renderBufferObject);
@@ -64,7 +72,7 @@ void GameScene::CreateFrameBuffer()
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, renderBufferObject); // Attach it to the framebuffer
 
 
-																												 // Check if we were successful
+	// Check if we were successful
 	if (glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE)
 	{
 		std::cout << "Successfully created framebuffer";
@@ -76,12 +84,50 @@ void GameScene::CreateFrameBuffer()
 	}
 }
 
+void GameScene::PostProcessingRender(GLuint program)
+{
+	// First pass
+	glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // we're not using the stencil buffer now
+	glEnable(GL_DEPTH_TEST);
+	Scene::Render(program);
+
+	// second pass
+	glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	Scene::Render(postProcessingProgram);
+
+	glBindVertexArray(screenVAO);
+	glDisable(GL_DEPTH_TEST);
+	glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
+	// glBindVertexArray(screenVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glEnable(GL_DEPTH_TEST);
+}
+
+
+void GameScene::Render(GLuint program)
+{
+	if (isPostProcessingEnabled)
+	{
+		PostProcessingRender(postProcessingProgram);
+	}
+	else
+	{
+		Scene::Render(program);
+	}
+}
+
 void GameScene::Update(float deltaTime)
 {
 	Scene::Update(deltaTime);
 
 	// Pause Input
 	ProcessPauseInput();
+
+	SwapBetweenPostProcessing();
 
 	if (Input::GetKeyState('q') == DOWN)
 	{
@@ -90,6 +136,38 @@ void GameScene::Update(float deltaTime)
 	else
 	{
 		glPolygonMode(GL_FRONT, GL_FILL);
+	}
+}
+
+void GameScene::SwapBetweenPostProcessing()
+{
+	// Inverse Colours
+	if (Input::GetKeyState('1') == DOWN)
+	{
+		postProcessingProgram = inverseColorsProgram;
+		isPostProcessingEnabled = true;
+	}
+	// Sharpen edges
+	else if (Input::GetKeyState('2') == DOWN)
+	{
+		postProcessingProgram = sharpenProgram;
+		isPostProcessingEnabled = true;
+	}
+	// Blur edges
+	else if (Input::GetKeyState('3') == DOWN)
+	{
+		postProcessingProgram = blurProgram;
+		isPostProcessingEnabled = true;
+	}
+	// Edge Detectuib
+	else if (Input::GetKeyState('4') == DOWN)
+	{
+		postProcessingProgram = edgeDetectionProgram;
+		isPostProcessingEnabled = true;
+	}
+	else
+	{
+		isPostProcessingEnabled = false;
 	}
 }
 

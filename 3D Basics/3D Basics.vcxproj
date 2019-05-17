@@ -236,10 +236,13 @@
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Blur.fs" />
+    <None Include="EdgeDetection.fs" />
     <None Include="FragmentGeometry.fs" />
     <None Include="FragmentShader.fs" />
     <None Include="FragmentTessalation.fs" />
     <None Include="GeometryShader.gs" />
+    <None Include="InverseColors.fs" />
     <None Include="Model.fs" />
     <None Include="Model.vs" />
     <None Include="Phong-FragmentShader.fs" />
@@ -248,6 +251,7 @@
     <None Include="Reflection-VS.vs" />
     <None Include="Rim-FragmentShader.fs" />
     <None Include="Rim-VertexShader.vs" />
+    <None Include="SharpenColours.fs" />
     <None Include="SkyBox-FS.fs" />
     <None Include="SkyBox-VS.vs" />
     <None Include="TessalationControl.tc" />

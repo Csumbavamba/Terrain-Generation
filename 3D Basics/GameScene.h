@@ -15,7 +15,9 @@ public:
 	GameScene();
 	virtual ~GameScene() {};
 
+	virtual void Render(GLuint program) override;
 	virtual void Update(float deltaTime) override;
+	void SwapBetweenPostProcessing();
 	virtual void Reset() override {};
 
 	void ProcessPauseInput();
@@ -23,6 +25,7 @@ public:
 private:
 
 	void CreateFrameBuffer();
+	void PostProcessingRender(GLuint program);
 
 	PauseMenu * pauseMenu = NULL;
 	Terrain* terrain = NULL;
@@ -30,6 +33,19 @@ private:
 	Star_2D* star = NULL;
 	TessalatedQuad* tessQuad = NULL;
 
+	// Post Processing
 	GLuint frameBuffer;
+	GLuint textureColorBuffer;
+	GLuint screenVAO;
+	GLuint sharpenProgram;
+	GLuint blurProgram;
+	GLuint edgeDetectionProgram;
+	GLuint inverseColorsProgram;
+
+	GLuint postProcessingProgram;
+	bool isPostProcessingEnabled;
+
+	
+	
 };
 
