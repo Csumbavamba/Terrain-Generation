@@ -14,6 +14,6 @@ public:
 	virtual void Render(Camera * camera, GLuint program) override;
 
 private:
-	
+	float distanceToCamera;
 };
 

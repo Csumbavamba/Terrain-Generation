@@ -5,7 +5,7 @@
 Tess2D_Quad::Tess2D_Quad(GameObject* owner)
 {
 	this->owner = owner;
-
+	distanceToCamera = 0.0f;
 }
 
 
@@ -40,9 +40,15 @@ void Tess2D_Quad::Render(Camera* camera, GLuint program)
 
 	PVM = camera->GetPV() * modelMatrix;
 
+	distanceToCamera = glm::distance(camera->GetCameraPosition(), owner->transform.position);
+
 	// Provide PVM
 	GLuint PVMLoc = glGetUniformLocation(program, "PVM");
 	glUniformMatrix4fv(PVMLoc, 1, GL_FALSE, glm::value_ptr(PVM));
+
+	// LOD
+	GLuint LODLoc = glGetUniformLocation(program, "LOD");
+	glUniform1f(LODLoc, distanceToCamera);
 
 	glBindVertexArray(VAO);
 	glDrawArrays(GL_PATCHES, 0, 4); 
