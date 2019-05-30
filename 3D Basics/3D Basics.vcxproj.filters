@@ -116,12 +116,6 @@
     <ClCompile Include="UI_InputField.cpp">
       <Filter>Source\Engine\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Animation2D.cpp">
-      <Filter>Source\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Animator2D.cpp">
-      <Filter>Source\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Mesh_Terrain.cpp">
       <Filter>Source\Engine\Meshes</Filter>
     </ClCompile>
@@ -258,12 +252,6 @@
     </ClInclude>
     <ClInclude Include="UI_InputField.h">
       <Filter>Header Files\Engine\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation2D.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Animator2D.h">
-      <Filter>Header Files\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Mesh_Terrain.h">
       <Filter>Header Files\Engine\Meshes</Filter>

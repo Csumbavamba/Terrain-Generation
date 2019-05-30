@@ -99,10 +99,10 @@ void GameScene::PostProcessingRender(GLuint program)
 	glClear(GL_COLOR_BUFFER_BIT);
 	Scene::Render(postProcessingProgram);
 
+	// Draw over screen
 	glBindVertexArray(screenVAO);
 	glDisable(GL_DEPTH_TEST);
 	glBindTexture(GL_TEXTURE_2D, textureColorBuffer);
-	// glBindVertexArray(screenVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glEnable(GL_DEPTH_TEST);
 }

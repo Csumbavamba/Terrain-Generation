@@ -4,6 +4,30 @@
 #include <sstream>
 
 
+Mesh_Terrain::Mesh_Terrain(GameObject* owner, std::string heighMapFile)
+{
+	this->owner = owner;
+
+	numberOfRows = 513;
+	numberOfColumns = 513;
+	cellSpacing = 1.0f;
+	indexCount = 0;
+	heightScale = 0.1f;
+	heightOffset = 0.0f;
+
+	// Calculate vertex and face count
+	numberOfVerticies = numberOfRows * numberOfColumns;
+	numberOfFaces = (numberOfRows - 1) * (numberOfColumns - 1) * 2;
+
+	heightMapFileName = heighMapFile;
+
+	// Load the height Map
+	LoadHeightMap();
+
+
+	// heightMapFileName = "HeigthMaps/coastMountain513.raw"; // TODO Add Functionality to enable PNG height maps
+}
+
 Mesh_Terrain::Mesh_Terrain(GameObject * owner)
 {
 	this->owner = owner;
@@ -15,18 +39,17 @@ Mesh_Terrain::Mesh_Terrain(GameObject * owner)
 	heightScale = 0.1f;
 	heightOffset = 0.0f;
 
-	heightMapFileName = "HeigthMaps/coastMountain513.raw"; // TODO Add Functionality to enable PNG height maps
+	// Calculate vertex and face count
+	numberOfVerticies = numberOfRows * numberOfColumns;
+	numberOfFaces = (numberOfRows - 1) * (numberOfColumns - 1) * 2;
+
+
+	GenerateTerrain();
 }
 
 
 void Mesh_Terrain::Initialise()
 {
-	// Calculate vertex and face count
-	numberOfVerticies = numberOfRows * numberOfColumns;
-	numberOfFaces = (numberOfRows - 1) * (numberOfColumns - 1) * 2;
-
-	// Load the height Map
-	LoadHeightMap();
 	SmoothTerrain();
 
 	// Build Buffers
@@ -220,6 +243,16 @@ void Mesh_Terrain::BuildIndexBuffer()
 
 	indexCount = numberOfFaces * 3;
 
+}
+
+void Mesh_Terrain::GenerateTerrain()
+{
+	heightMap.resize(numberOfVerticies);
+
+	for (int i = 0; i < numberOfVerticies; i++)
+	{
+		heightMap[i] = 0.0f;
+	}
 }
 
 void Mesh_Terrain::LoadHeightMap()

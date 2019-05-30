@@ -141,8 +141,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Animation2D.cpp" />
-    <ClCompile Include="Animator2D.cpp" />
     <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="AudioQueue.cpp" />
@@ -188,9 +186,7 @@
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animator2D.h" />
     <ClInclude Include="AudioEngine.h" />
-    <ClInclude Include="Animation2D.h" />
     <ClInclude Include="AudioQueue.h" />
     <ClInclude Include="AudioSound.h" />
     <ClInclude Include="AudioSystem.h" />

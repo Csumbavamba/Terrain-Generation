@@ -11,10 +11,6 @@ public:
 
 	virtual void Initialise() override;
 
-	void PlayAnimation(Animation2D* animation);
-
-	void Animate();
-
 private:
 	Animation2D* animation = NULL;
 };

@@ -15,6 +15,8 @@ struct VertexInfo
 class Mesh_Terrain : public Mesh
 {
 public:
+	// Only works with .Raw file
+	Mesh_Terrain(GameObject* owner, std::string heighMapFile);
 	Mesh_Terrain(GameObject* owner);
 	virtual ~Mesh_Terrain() {};
 
@@ -27,8 +29,10 @@ public:
 
 // Functions
 private:
+	void CreatePerlinNoise(int count, float seed, int octaves);
 	void BuildVertexBuffer();
 	void BuildIndexBuffer();
+	void GenerateTerrain();
 	void LoadHeightMap();
 	void SmoothTerrain();
 	bool IsInBounds(GLuint x, GLuint y);
