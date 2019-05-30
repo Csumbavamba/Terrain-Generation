@@ -6,8 +6,8 @@
 Terrain::Terrain(Camera* camera)
 {
 	this->camera = camera;
-	terrain = new Mesh_Terrain(this, "HeigthMaps/coastMountain513.raw");
-	// terrain = new Mesh_Terrain(this);
+	// terrain = new Mesh_Terrain(this, "HeigthMaps/coastMountain513.raw");
+	terrain = new Mesh_Terrain(this);
 
 	terrain->GetTexture()->SetTexturePath("Sprites/grass.jpg");
 }
