@@ -10,7 +10,7 @@ MovingCube::MovingCube(Camera* mainCamera)
 	this->camera = mainCamera;
 
 	mesh = new Mesh_Cube(this);
-	speed = 15.0f;
+	speed = 150.0f;
 
 	mesh->GetTexture()->SetTexturePath("Sprites/Rock.png");
 }
@@ -91,8 +91,8 @@ void MovingCube::CameraTraceCube()
 {
 	// Make camera follow the cube
 	glm::vec3 cameraPosition = transform.position;
-	cameraPosition.z += 10.0f;
-	cameraPosition.y += 1.0f;
+	cameraPosition.z += 30.0f;
+	cameraPosition.y += 10.0f;
 	camera->SetCameraPosition(cameraPosition);
 
 	//// Make camera look at the cube

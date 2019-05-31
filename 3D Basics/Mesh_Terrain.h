@@ -18,7 +18,7 @@ public:
 	// Only works with .Raw file
 	Mesh_Terrain(GameObject* owner, std::string heighMapFile);
 	Mesh_Terrain(GameObject* owner);
-	virtual ~Mesh_Terrain() {};
+	virtual ~Mesh_Terrain();
 
 	virtual void Initialise() override;
 
@@ -29,7 +29,8 @@ public:
 
 // Functions
 private:
-	void CreatePerlinNoise(int count, float seed, int octaves);
+	void SetupNoise();
+	void CreatePerlinNoise(int octaves);
 	void BuildVertexBuffer();
 	void BuildIndexBuffer();
 	void GenerateTerrain();
@@ -40,6 +41,12 @@ private:
 
 // Variables
 private:
+
+	// Noise
+	float* noiseSeed = NULL;
+	float* perlinNoise = NULL;
+	float lacunarity;
+	
 
 	// Mesh Creation
 	int numberOfVerticies;

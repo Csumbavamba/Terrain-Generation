@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <time.h> 
 
 
 Mesh_Terrain::Mesh_Terrain(GameObject* owner, std::string heighMapFile)
@@ -23,13 +24,12 @@ Mesh_Terrain::Mesh_Terrain(GameObject* owner, std::string heighMapFile)
 
 	// Load the height Map
 	LoadHeightMap();
-
-
-	// heightMapFileName = "HeigthMaps/coastMountain513.raw"; // TODO Add Functionality to enable PNG height maps
 }
 
 Mesh_Terrain::Mesh_Terrain(GameObject * owner)
 {
+	srand(time(NULL));
+
 	this->owner = owner;
 
 	numberOfRows = 513;
@@ -38,13 +38,24 @@ Mesh_Terrain::Mesh_Terrain(GameObject * owner)
 	indexCount = 0;
 	heightScale = 0.1f;
 	heightOffset = 0.0f;
+	lacunarity = 0.75f;
 
 	// Calculate vertex and face count
 	numberOfVerticies = numberOfRows * numberOfColumns;
 	numberOfFaces = (numberOfRows - 1) * (numberOfColumns - 1) * 2;
 
-
+	SetupNoise();
+	CreatePerlinNoise(5);
 	GenerateTerrain();
+}
+
+Mesh_Terrain::~Mesh_Terrain()
+{
+	delete noiseSeed;
+	noiseSeed = NULL;
+
+	delete perlinNoise;
+	perlinNoise = NULL;
 }
 
 
@@ -101,6 +112,63 @@ float Mesh_Terrain::GetWidth() const
 float Mesh_Terrain::GetDepth() const
 {
 	return (numberOfRows - 1) * cellSpacing;
+}
+
+void Mesh_Terrain::SetupNoise()
+{
+	// Create arrays for the seed and the noise
+	noiseSeed = new float[numberOfVerticies];
+	perlinNoise = new float[numberOfVerticies];
+
+	for (int i = 0; i < numberOfVerticies; ++i)
+	{
+		// Randomize each noise value
+		noiseSeed[i] = (float)rand() / (float)RAND_MAX;
+	}
+}
+
+void Mesh_Terrain::CreatePerlinNoise(int octaves)
+{
+	for (int x = 0; x < numberOfRows; ++x)
+	{
+		for (int z = 0; z < numberOfColumns; ++z)
+		{
+			float noise = 0.0f;
+			float scale = 1.0f;
+			float accumulatedScale = 0.0f;
+
+			for (int octave = 0; octave < octaves; ++octave)
+			{
+				// Keep halfing the pitch by each octave
+				int pitch = numberOfRows >> octave;
+
+				int sampleX1 = (x / pitch) * pitch;
+				int sampleZ1 = (z / pitch) * pitch;
+
+				int sampleX2 = (sampleX1 + pitch) % numberOfRows;
+				int sampleZ2 = (sampleZ1 + pitch) % numberOfRows;
+
+				// Setup for Linear interpolation
+				float blendX = (float)(x - sampleX1) / (float)pitch;
+				float blendZ = (float)(z - sampleZ1) / (float)pitch;
+
+				/// Linear Interpolation
+				float sampleA = (1.0f - blendX) * noiseSeed[sampleZ1 * numberOfRows + sampleX1] 
+					+ blendX * noiseSeed[sampleZ1 * numberOfRows + sampleX2];
+
+				float sampleB = (1.0f - blendX) * noiseSeed[sampleZ2 * numberOfRows + sampleX1]
+					+ blendX * noiseSeed[sampleZ2 * numberOfRows + sampleX2];
+
+				// Calculate Noise
+				noise += (blendZ * (sampleB - sampleA) + sampleA) * scale;
+				accumulatedScale += scale;
+				scale *= lacunarity;
+			}
+
+			// Scale to 0-1
+			perlinNoise[z * numberOfRows + x] = noise / accumulatedScale;
+		}
+	}
 }
 
 void Mesh_Terrain::BuildVertexBuffer()
@@ -251,7 +319,7 @@ void Mesh_Terrain::GenerateTerrain()
 
 	for (int i = 0; i < numberOfVerticies; i++)
 	{
-		heightMap[i] = 0.0f;
+		heightMap[i] = perlinNoise[i] * (heightScale + heightOffset) * 1000.0f;
 	}
 }
 
