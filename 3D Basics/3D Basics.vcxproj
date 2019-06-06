@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\Dependencies\freetype;$(ProjectDir)\Dependencies;$(ProjectDir)\Dependencies\fmod;$(ProjectDir)\Dependencies\glm;$(ProjectDir)\Dependencies\freeglut;$(ProjectDir)\Dependencies\soil;$(ProjectDir)\Dependencies\glew;$(ProjectDir)\Dependencies\assimp;$(IncludePath)</IncludePath>
+    <IncludePath>(ProjectDir)\Shaders;$(ProjectDir)\Dependencies\freetype;$(ProjectDir)\Dependencies;$(ProjectDir)\Dependencies\fmod;$(ProjectDir)\Dependencies\glm;$(ProjectDir)\Dependencies\freeglut;$(ProjectDir)\Dependencies\soil;$(ProjectDir)\Dependencies\glew;$(ProjectDir)\Dependencies\assimp;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\Dependencies\freetype;$(ProjectDir)\Dependencies;$(ProjectDir)\Dependencies\fmod;$(ProjectDir)\Dependencies\glm;$(ProjectDir)\Dependencies\soil;$(ProjectDir)\Dependencies\glew;$(ProjectDir)\Dependencies\freeglut;$(LibraryPath);$(ProjectDir)\Dependencies\assimp</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -150,6 +150,7 @@
     <ClCompile Include="Geometry_Star.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovingCube.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="StartMenuScene.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="Geometry_Star.h" />
     <ClInclude Include="IntroScene.h" />
     <ClInclude Include="MovingCube.h" />
+    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="StartMenuScene.h" />
@@ -232,31 +234,33 @@
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Blur.fs" />
-    <None Include="EdgeDetection.fs" />
-    <None Include="FragmentGeometry.fs" />
-    <None Include="FragmentShader.fs" />
-    <None Include="FragmentTessalation.fs" />
-    <None Include="GeometryShader.gs" />
-    <None Include="InverseColors.fs" />
-    <None Include="Model.fs" />
-    <None Include="Model.vs" />
-    <None Include="Phong-FragmentShader.fs" />
-    <None Include="Phong-VertexShader.vs" />
-    <None Include="Reflection-FS.fs" />
-    <None Include="Reflection-VS.vs" />
-    <None Include="Rim-FragmentShader.fs" />
-    <None Include="Rim-VertexShader.vs" />
-    <None Include="SharpenColours.fs" />
-    <None Include="SkyBox-FS.fs" />
-    <None Include="SkyBox-VS.vs" />
-    <None Include="TessalationControl.tc" />
-    <None Include="TessalationEvaluation.te" />
-    <None Include="Text.fs" />
-    <None Include="Text.vs" />
-    <None Include="VertexGeometry.vs" />
-    <None Include="VertexShader.vs" />
-    <None Include="VertexTessalation.vs" />
+    <None Include="Shaders\Blur.fs" />
+    <None Include="Shaders\EdgeDetection.fs" />
+    <None Include="Shaders\FragmentGeometry.fs" />
+    <None Include="Shaders\FragmentShader.fs" />
+    <None Include="Shaders\FragmentTessalation.fs" />
+    <None Include="Shaders\GeometryShader.gs" />
+    <None Include="Shaders\InverseColors.fs" />
+    <None Include="Shaders\Model.fs" />
+    <None Include="Shaders\Model.vs" />
+    <None Include="Shaders\ParticleFragment.fs" />
+    <None Include="Shaders\ParticleVertex.vs" />
+    <None Include="Shaders\Phong-FragmentShader.fs" />
+    <None Include="Shaders\Phong-VertexShader.vs" />
+    <None Include="Shaders\Reflection-FS.fs" />
+    <None Include="Shaders\Reflection-VS.vs" />
+    <None Include="Shaders\Rim-FragmentShader.fs" />
+    <None Include="Shaders\Rim-VertexShader.vs" />
+    <None Include="Shaders\SharpenColours.fs" />
+    <None Include="Shaders\SkyBox-FS.fs" />
+    <None Include="Shaders\SkyBox-VS.vs" />
+    <None Include="Shaders\TessalationControl.tc" />
+    <None Include="Shaders\TessalationEvaluation.te" />
+    <None Include="Shaders\Text.fs" />
+    <None Include="Shaders\Text.vs" />
+    <None Include="Shaders\VertexGeometry.vs" />
+    <None Include="Shaders\VertexShader.vs" />
+    <None Include="Shaders\VertexTessalation.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

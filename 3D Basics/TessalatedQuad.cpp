@@ -10,10 +10,10 @@ TessalatedQuad::TessalatedQuad(Camera * mainCamera)
 	mesh = new Tess2D_Quad(this);
 
 	tessalationProgram = ShaderLoader::GetInstance()->CreateProgram(
-		"VertexTessalation.vs",
-		"TessalationControl.tc",
-		"TessalationEvaluation.te",
-		"FragmentTessalation.fs");
+		"Shaders/VertexTessalation.vs",
+		"Shaders/TessalationControl.tc",
+		"Shaders/TessalationEvaluation.te",
+		"Shaders/FragmentTessalation.fs");
 }
 
 

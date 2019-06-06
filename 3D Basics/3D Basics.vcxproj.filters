@@ -133,6 +133,7 @@
     </ClCompile>
     <ClCompile Include="Tess2D_Quad.cpp" />
     <ClCompile Include="TessalatedQuad.cpp" />
+    <ClCompile Include="ParticleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -270,83 +271,7 @@
     </ClInclude>
     <ClInclude Include="Tess2D_Quad.h" />
     <ClInclude Include="TessalatedQuad.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="FragmentShader.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Model.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Phong-FragmentShader.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Reflection-FS.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Rim-FragmentShader.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="SkyBox-FS.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Text.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Model.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="Phong-VertexShader.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="Reflection-VS.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="Rim-VertexShader.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="SkyBox-VS.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="Text.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="VertexShader.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="GeometryShader.gs">
-      <Filter>Resources\Shaders\Geometry</Filter>
-    </None>
-    <None Include="VertexGeometry.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="FragmentGeometry.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="TessalationControl.tc">
-      <Filter>Resources\Shaders\Tessalation</Filter>
-    </None>
-    <None Include="TessalationEvaluation.te">
-      <Filter>Resources\Shaders\Tessalation</Filter>
-    </None>
-    <None Include="VertexTessalation.vs">
-      <Filter>Resources\Shaders\Vertex</Filter>
-    </None>
-    <None Include="FragmentTessalation.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="InverseColors.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="SharpenColours.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="Blur.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
-    <None Include="EdgeDetection.fs">
-      <Filter>Resources\Shaders\Fragment</Filter>
-    </None>
+    <ClInclude Include="ParticleSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -424,5 +349,88 @@
     <Filter Include="Header Files\Engine\Geometry">
       <UniqueIdentifier>{ad5f2caf-0282-4836-ad78-6a0ad3f651cd}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shaders\SharpenColours.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\InverseColors.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\FragmentTessalation.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\FragmentGeometry.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\Blur.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\EdgeDetection.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\ParticleFragment.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\Text.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\SkyBox-FS.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\Rim-FragmentShader.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\Reflection-FS.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\Phong-FragmentShader.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\Model.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\FragmentShader.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
+    </None>
+    <None Include="Shaders\GeometryShader.gs">
+      <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="Shaders\TessalationControl.tc">
+      <Filter>Resources\Shaders\Tessalation</Filter>
+    </None>
+    <None Include="Shaders\TessalationEvaluation.te">
+      <Filter>Resources\Shaders\Tessalation</Filter>
+    </None>
+    <None Include="Shaders\VertexTessalation.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\VertexGeometry.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\ParticleVertex.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\VertexShader.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\Text.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\SkyBox-VS.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\Reflection-VS.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\Rim-VertexShader.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\Phong-VertexShader.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\Model.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
   </ItemGroup>
 </Project>

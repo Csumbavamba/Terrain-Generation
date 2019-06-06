@@ -38,10 +38,10 @@ GameScene::GameScene()
 
 	CreateFrameBuffer();
 
-	edgeDetectionProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "EdgeDetection.fs");
-	inverseColorsProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "InverseColors.fs");
-	sharpenProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "SharpenColours.fs");
-	blurProgram = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "Blur.fs");
+	edgeDetectionProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/VertexShader.vs", "Shaders/EdgeDetection.fs");
+	inverseColorsProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/VertexShader.vs", "Shaders/InverseColors.fs");
+	sharpenProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/VertexShader.vs", "Shaders/SharpenColours.fs");
+	blurProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/VertexShader.vs", "Shaders/Blur.fs");
 	postProcessingProgram = inverseColorsProgram;
 
 }

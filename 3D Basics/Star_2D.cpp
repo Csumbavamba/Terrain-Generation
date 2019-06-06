@@ -9,7 +9,7 @@ Star_2D::Star_2D(Camera* mainCamera)
 	this->camera = mainCamera;
 	geometry = new Geometry_Star(this);
 
-	starGeometryProgram = ShaderLoader::GetInstance()->CreateProgram("VertexGeometry.vs", "GeometryShader.gs", "FragmentGeometry.fs");
+	starGeometryProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/VertexGeometry.vs", "Shaders/GeometryShader.gs", "Shaders/FragmentGeometry.fs");
 }
 
 

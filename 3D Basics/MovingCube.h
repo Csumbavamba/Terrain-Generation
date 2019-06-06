@@ -3,6 +3,7 @@
 
 class Mesh_Cube;
 class Terrain;
+class ParticleSystem;
 
 class MovingCube :
 	public GameObject
@@ -25,8 +26,8 @@ public:
 	bool IsOnTerrain();
 
 private:
-	// Camera that follows the cube
-	// a link for the mesh it's trying to walk on
+
+	ParticleSystem* particleSystem = nullptr;
 
 	float speed;
 	Terrain* terrain = NULL;

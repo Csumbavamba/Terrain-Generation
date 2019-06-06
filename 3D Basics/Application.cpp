@@ -128,7 +128,7 @@ void Application::PlayGame(int argc, char ** argv)
 void Application::Initialise()
 {
 	// Create Programs
-	program = ShaderLoader::GetInstance()->CreateProgram("VertexShader.vs", "FragmentShader.fs");
+	program = ShaderLoader::GetInstance()->CreateProgram("Shaders/VertexShader.vs", "Shaders/FragmentShader.fs");
 
 	// Initialize the Scenes
 	for (Scene * scene : scenes)

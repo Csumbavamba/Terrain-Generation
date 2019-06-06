@@ -5,7 +5,7 @@
 
 Model::Model(std::string path, Camera* camera, GameObject * owner)
 {
-	this->program = ShaderLoader::GetInstance()->CreateProgram("Model.vs", "Model.fs");
+	this->program = ShaderLoader::GetInstance()->CreateProgram("Shaders/Model.vs", "Shaders/Model.fs");
 
 	this->camera = camera;
 	this->owner = owner;

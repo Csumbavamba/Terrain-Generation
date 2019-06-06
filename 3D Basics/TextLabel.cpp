@@ -28,7 +28,7 @@ void TextLabel::Initialise()
 	GLfloat halfWidth = (GLfloat)(Utility::GetScreenWidth() * 0.5f);
 	GLfloat halfHeight = (GLfloat)(Utility::GetScreenHeight() * 0.5f);
 	projectionMatrix = glm::ortho(-halfWidth, halfWidth, -halfHeight, halfHeight);
-	program = ShaderLoader::GetInstance()->CreateProgram("Text.vs", "Text.fs");
+	program = ShaderLoader::GetInstance()->CreateProgram("Shaders/Text.vs", "Shaders/Text.fs");
 
 	
 	// Initialise the font library

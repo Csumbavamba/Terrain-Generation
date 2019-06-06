@@ -4,12 +4,15 @@
 #include "Input.h"
 #include "Camera.h"
 #include "Texture.h"
+#include "ParticleSystem.h"
 
 MovingCube::MovingCube(Camera* mainCamera)
 {
 	this->camera = mainCamera;
 
 	mesh = new Mesh_Cube(this);
+	particleSystem = new ParticleSystem(this);
+
 	speed = 150.0f;
 
 	mesh->GetTexture()->SetTexturePath("Sprites/Rock.png");
@@ -20,6 +23,9 @@ MovingCube::~MovingCube()
 {
 	delete mesh;
 	mesh = NULL;
+
+	delete particleSystem;
+	particleSystem = NULL;
 }
 
 void MovingCube::SetTerrain(Terrain* terrain)
@@ -30,18 +36,22 @@ void MovingCube::SetTerrain(Terrain* terrain)
 void MovingCube::Initialise()
 {
 	mesh->Initialise();
+
 	FollowTerrainHeight();
 }
 
 void MovingCube::Render(GLuint program)
 {
-	mesh->Render(camera, program);
+	particleSystem->Render(camera, NULL);
+
+	// mesh->Render(camera, program);
 }
 
 void MovingCube::Update(float deltaTime)
 {
 	mesh->Update();
 
+	particleSystem->Update(deltaTime);
 	CameraTraceCube();
 	ProcessMovementInput(deltaTime);
 }
