@@ -133,12 +133,18 @@
     </ClCompile>
     <ClCompile Include="Tess2D_Quad.cpp" />
     <ClCompile Include="TessalatedQuad.cpp" />
-    <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Particle.cpp">
-      <Filter>Stash</Filter>
+      <Filter>Source\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Fountain.cpp" />
-    <ClCompile Include="FountainScene.cpp" />
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Source\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="FountainScene.cpp">
+      <Filter>Source\3D Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Fountain.cpp">
+      <Filter>Source\3D Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -273,12 +279,18 @@
     </ClInclude>
     <ClInclude Include="Tess2D_Quad.h" />
     <ClInclude Include="TessalatedQuad.h" />
-    <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="Particle.h">
-      <Filter>Stash</Filter>
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Fountain.h" />
-    <ClInclude Include="FountainScene.h" />
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="FountainScene.h">
+      <Filter>Header Files\3D Game\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Fountain.h">
+      <Filter>Header Files\3D Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -355,6 +367,9 @@
     </Filter>
     <Filter Include="Header Files\Engine\Geometry">
       <UniqueIdentifier>{ad5f2caf-0282-4836-ad78-6a0ad3f651cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Shaders\ComputeShader">
+      <UniqueIdentifier>{8d8cda5e-fedf-48c9-8f7e-d91bedf6aedf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -441,6 +456,15 @@
     </None>
     <None Include="Shaders\ParticleGeometry.gs">
       <Filter>Resources\Shaders\Geometry</Filter>
+    </None>
+    <None Include="Shaders\ComputeShader.comp">
+      <Filter>Resources\Shaders\ComputeShader</Filter>
+    </None>
+    <None Include="Shaders\ParticleVertexGPU.vs">
+      <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\ParticleFragmentGPU.fs">
+      <Filter>Resources\Shaders\Fragment</Filter>
     </None>
   </ItemGroup>
 </Project>

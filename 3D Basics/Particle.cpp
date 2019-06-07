@@ -15,12 +15,13 @@ Particle::Particle(ParticleSystem* particleSystem, int randomizerID)
 	this->origin = particleSystem->GetOwner()->transform.position;
 
 	this->position = this->origin;
-	this->velocity = glm::vec3(
-		0.25f * cos(Time::GetDeltaTime()) + 0.25f * RandomFloat() - 0.125f,
-		2.0f + 0.25f * RandomFloat() - 0.125f,
-		0.25f * sin(Time::GetDeltaTime()) + 0.25f * RandomFloat() - 0.125f);
 
-	this->life = 1.0f;
+	this->velocity = glm::vec3(
+		0.25f * sin(randomizerID * Time::GetDeltaTime()) + 0.25f * RandomFloat() - 0.125f,
+		1.5f + 0.25f * RandomFloat() - 0.125f,
+		0.25f * cos(randomizerID* Time::GetDeltaTime()) + 0.25f * RandomFloat() - 0.125f);
+
+	this->life = RandomFloat() + 0.5f;
 }
 
 

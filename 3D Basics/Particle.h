@@ -18,13 +18,13 @@ public:
 	float GetLife() const;
 	void SetLife(float life);
 
-	
+	static float RandomFloat();
 
 // Functions
 private:
 
 	float RandomFloatInRange(float from, float to);
-	float RandomFloat();
+	
 
 // Variables
 private:

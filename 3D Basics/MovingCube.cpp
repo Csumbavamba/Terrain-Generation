@@ -11,7 +11,7 @@ MovingCube::MovingCube(Camera* mainCamera)
 	this->camera = mainCamera;
 
 	mesh = new Mesh_Cube(this);
-	particleSystem = new ParticleSystem(this);
+	particleSystem = new ParticleSystem(this, false);
 
 	speed = 150.0f;
 

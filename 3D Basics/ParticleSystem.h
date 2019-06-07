@@ -18,7 +18,7 @@ class ParticleSystem
 {
 
 public:
-	ParticleSystem(GameObject* owner);
+	ParticleSystem(GameObject* owner, bool onGPU);
 	virtual ~ParticleSystem();
 
 	virtual void Initialise();
@@ -38,12 +38,18 @@ private:
 	Texture* texture = NULL;
 
 	GLuint numberOfParticles;
-	GLuint numberOfNewParticles;
-	GLuint lastUsedParticle;
-
 	GLuint particlesProgram;
+
 	std::vector<Particle*> particles;
 	std::vector<glm::vec3> particlePositions;
+
+	/// GPU calculations
+	bool onGPU;
+	std::vector<glm::vec4> initialPosition;
+	std::vector<glm::vec4> initialVelocity;
+
+	GLuint positionVBO, velocityVBO, initialVelocityVBO, particleVAO; // Particle VAO is not used, but needed to avoid errors
+	GLuint computeProgram, GPUParticlesProgram;
 
 
 	

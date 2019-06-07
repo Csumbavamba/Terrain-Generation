@@ -240,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\Blur.fs" />
+    <None Include="Shaders\ComputeShader.comp" />
     <None Include="Shaders\EdgeDetection.fs" />
     <None Include="Shaders\FragmentGeometry.fs" />
     <None Include="Shaders\FragmentShader.fs" />
@@ -249,8 +250,10 @@
     <None Include="Shaders\Model.fs" />
     <None Include="Shaders\Model.vs" />
     <None Include="Shaders\ParticleFragment.fs" />
+    <None Include="Shaders\ParticleFragmentGPU.fs" />
     <None Include="Shaders\ParticleGeometry.gs" />
     <None Include="Shaders\ParticleVertex.vs" />
+    <None Include="Shaders\ParticleVertexGPU.vs" />
     <None Include="Shaders\Phong-FragmentShader.fs" />
     <None Include="Shaders\Phong-VertexShader.vs" />
     <None Include="Shaders\Reflection-FS.fs" />
