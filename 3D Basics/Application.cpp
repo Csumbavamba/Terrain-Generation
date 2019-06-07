@@ -23,10 +23,10 @@ Application::Application()
 {
 	// Create Scenes
 	startMenuScene = new StartMenuScene();
-	// startMenuScene->SetIsActiveScene(true);
+	startMenuScene->SetIsActiveScene(true);
 	gameScene = new GameScene();
 	fountainScene = new FountainScene();
-	fountainScene->SetIsActiveScene(true);
+	// fountainScene->SetIsActiveScene(true);
 
 	
 	// Push Scenes into the scene Holder

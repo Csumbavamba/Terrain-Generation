@@ -11,7 +11,7 @@ out vec4 color;
 
 void main(void)
 {
-	vec4 colorValue = vec4 (123.0f/255.0f, 173.0f/255.0f, 203.0f/255.0f, 1.0f);
+	vec4 colorValue = vec4 (0.8f, 0.5f, 0.0f, 1.0f);
 
 	color = (texture(tex, vec2(fs_in.fragTexCoord.x, fs_in.fragTexCoord.y)) * colorValue);
 }

@@ -37,14 +37,16 @@ void MovingCube::Initialise()
 {
 	mesh->Initialise();
 
+	particleSystem->Initialise();
+
 	FollowTerrainHeight();
 }
 
 void MovingCube::Render(GLuint program)
 {
-	particleSystem->Render(camera, NULL);
+	mesh->Render(camera, program);
 
-	// mesh->Render(camera, program);
+	particleSystem->Render(camera, NULL);
 }
 
 void MovingCube::Update(float deltaTime)
@@ -52,6 +54,7 @@ void MovingCube::Update(float deltaTime)
 	mesh->Update();
 
 	particleSystem->Update(deltaTime);
+
 	CameraTraceCube();
 	ProcessMovementInput(deltaTime);
 }

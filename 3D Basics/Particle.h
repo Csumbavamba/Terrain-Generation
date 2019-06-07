@@ -2,6 +2,7 @@
 
 #include "Transform.h"
 
+
 class ParticleSystem;
 
 class Particle
@@ -22,6 +23,7 @@ public:
 // Functions
 private:
 
+	float RandomFloatInRange(float from, float to);
 	float RandomFloat();
 
 // Variables

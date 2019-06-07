@@ -31,9 +31,6 @@ private:
 	
 	void PopulateQuadPositions(Camera* camera, glm::vec3& OUT quad1, glm::vec3& OUT quad2);
 
-	GLuint GetFirstUnusedParticle();
-	void RespawnParticle(Particle& particle, glm::vec2 offSet);
-
 private:
 
 	GameObject* owner = nullptr;

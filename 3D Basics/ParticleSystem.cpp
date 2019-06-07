@@ -17,7 +17,7 @@ ParticleSystem::ParticleSystem(GameObject* owner)
 
 	// Create Texture
 	texture = new Texture();
-	texture->SetTexturePath("Sprites/Rayman.jpg");
+	texture->SetTexturePath("Sprites/fireBall.png");
 	texture->Initialise();
 
 	// Create the shader program
@@ -112,7 +112,7 @@ void ParticleSystem::Render(Camera* camera, GLuint program)
 	// Reset Blending to standard blend
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glDepthMask(GL_TRUE); 
-	glDisable(GL_BLEND); // TODO - this might need removal
+	//glDisable(GL_BLEND); // TODO - this might need removal
 }
 
 void ParticleSystem::Update(float deltaTime, glm::vec2 offSet)
