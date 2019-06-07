@@ -1,13 +1,17 @@
 #version 450 core
 
-in vec2 fragTexCoord;
-in vec4 particleColor;
-
-out vec4 color;
+in GS_FS_VERTEX
+{
+	vec2 fragTexCoord;
+} fs_in;
 
 uniform sampler2D tex;
 
+out vec4 color;
+
 void main(void)
 {
-	color = (texture(tex, fragTexCoord) * particleColor);
+	vec4 colorValue = vec4 (123.0f/255.0f, 173.0f/255.0f, 203.0f/255.0f, 1.0f);
+
+	color = (texture(tex, vec2(fs_in.fragTexCoord.x, fs_in.fragTexCoord.y)) * colorValue);
 }

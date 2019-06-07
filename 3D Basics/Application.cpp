@@ -13,7 +13,7 @@
 #include "SceneManager.h"
 #include "StartMenuScene.h"
 #include "GameScene.h"
-
+#include "FountainScene.h"
 
 #pragma comment(lib, "Ws2_32.lib")
 
@@ -23,14 +23,16 @@ Application::Application()
 {
 	// Create Scenes
 	startMenuScene = new StartMenuScene();
-	startMenuScene->SetIsActiveScene(true);
+	// startMenuScene->SetIsActiveScene(true);
 	gameScene = new GameScene();
+	fountainScene = new FountainScene();
+	fountainScene->SetIsActiveScene(true);
 
 	
 	// Push Scenes into the scene Holder
 	scenes.push_back(startMenuScene);
 	scenes.push_back(gameScene);
-
+	scenes.push_back(fountainScene);
 
 	backgroundMusic = new AudioSound("Audio/Moria-Music.mp3", LOOPING);
 

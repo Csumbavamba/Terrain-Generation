@@ -134,6 +134,11 @@
     <ClCompile Include="Tess2D_Quad.cpp" />
     <ClCompile Include="TessalatedQuad.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="Particle.cpp">
+      <Filter>Stash</Filter>
+    </ClCompile>
+    <ClCompile Include="Fountain.cpp" />
+    <ClCompile Include="FountainScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -239,9 +244,6 @@
       <Filter>Header Files\Engine\Sound</Filter>
     </ClInclude>
     <ClInclude Include="GameScene.h" />
-    <ClInclude Include="IntroScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>Header Files\3D Game</Filter>
     </ClInclude>
@@ -272,6 +274,11 @@
     <ClInclude Include="Tess2D_Quad.h" />
     <ClInclude Include="TessalatedQuad.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Particle.h">
+      <Filter>Stash</Filter>
+    </ClInclude>
+    <ClInclude Include="Fountain.h" />
+    <ClInclude Include="FountainScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -431,6 +438,9 @@
     </None>
     <None Include="Shaders\Model.vs">
       <Filter>Resources\Shaders\Vertex</Filter>
+    </None>
+    <None Include="Shaders\ParticleGeometry.gs">
+      <Filter>Resources\Shaders\Geometry</Filter>
     </None>
   </ItemGroup>
 </Project>

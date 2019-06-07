@@ -12,11 +12,8 @@ class ShaderLoader;
 
 class Scene;
 class StartMenuScene;
-class CreditsScene;
-class ControlsScene;
 class GameScene;
-class UITestScene;
-class CutScene;
+class FountainScene;
 
 class AudioSound;
 
@@ -47,11 +44,8 @@ private:
 	GLuint program;
 
 	StartMenuScene * startMenuScene = NULL;
-	CreditsScene * creditsScene = NULL;
-	ControlsScene * controlsScene = NULL;
 	GameScene * gameScene = NULL;
-	UITestScene* uiTestScene = NULL;
-	CutScene* introCutscene = NULL;
+	FountainScene* fountainScene = NULL;
 	
 
 	std::vector<Scene*> scenes;

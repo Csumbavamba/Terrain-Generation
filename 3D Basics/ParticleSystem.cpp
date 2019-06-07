@@ -4,12 +4,14 @@
 #include "GameObject.h"
 #include "Camera.h"
 #include "Texture.h"
+#include "Particle.h"
 
 ParticleSystem::ParticleSystem(GameObject* owner)
 {
 	this->owner = owner;
 
-	numberOfParticles = 4000;
+	// Setup Particle system
+	numberOfParticles = 500;
 	numberOfNewParticles = 2;
 	lastUsedParticle = 0;
 
@@ -19,177 +21,123 @@ ParticleSystem::ParticleSystem(GameObject* owner)
 	texture->Initialise();
 
 	// Create the shader program
-	particlesProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/ParticleVertex.vs", "Shaders/" ,"Shaders/ParticleFragment.fs"); // TODO add geometry shader
+	particlesProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/ParticleVertex.vs", "Shaders/ParticleGeometry.gs" ,"Shaders/ParticleFragment.fs");
 
-	// Populate particles
+	// Create Particles and store them
 	for (GLuint i = 0; i < numberOfParticles; ++i)
 	{
-		particlePositions.push_back(glm::vec3());
+		// Push particle positions
+		particlePositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
+
+		// Create particles
+		Particle* particle = new Particle(this, i);
+
+		particles.push_back(particle);
 	}
-
-
-
-	Initialise();
 }
 
 ParticleSystem::~ParticleSystem()
 {
 	delete texture;
 	texture = nullptr;
+
+	// Delete each particle
+	for (int i = 0; i < particles.size(); ++i)
+	{
+		delete particles[i];
+		particles[i] = nullptr;
+	}
+
+	// Clear the particle containers
+	particles.clear();
+	particlePositions.clear();
 }
 
 void ParticleSystem::Initialise()
 {
 	// Set up mesh and attribute properties
-	GLuint VBO;
-	GLuint EBO;
-
-	GLfloat particleQuad[] = {
-		0.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f,
-		0.0f, 0.0f, 0.0f, 0.0f,
-		1.0f, 1.0f, 1.0f, 1.0f
-	};
-
-	GLuint indicies[] =
-	{
-		0, 2, 1,
-		2, 3, 1	
-
-	};
-
+	glGenBuffers(1, &VBO);
 	glGenVertexArrays(1, &this->VAO);
 	glBindVertexArray(this->VAO);
-
-	glGenBuffers(1, &VBO);
 	
 	// Fill the mesh buffer
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(particleQuad), particleQuad, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * particlePositions.size(), &particlePositions[0], GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GLfloat), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
-
-	// EBO
-	glGenBuffers(1, &EBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicies), indicies, GL_STATIC_DRAW);
 	
 	glBindVertexArray(0);
 }
 
+
+
 void ParticleSystem::Render(Camera* camera, GLuint program)
 {
 	// Additive blending to give a glow effect
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	glEnable(GL_BLEND); // This Might not needed
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDepthMask(GL_FALSE);
 
+	// Get View and Projection matrix
+	glm::mat4 PV = camera->GetPV();
+
+	/// Create Particle Quad details
+	glm::vec3 quad1, quad2;
+	PopulateQuadPositions(camera, quad1, quad2);
+
+	// Utilise the particle program
 	glUseProgram(particlesProgram);
 
-	for (Particle particle : particles)
-	{
-		// Only draw if they are alive
-		if (particle.life > 0.0f)
-		{
-			// Add texture
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, texture->GetTexture());
-			glUniform1i(glGetUniformLocation(program, "tex"), 0);
+	// Add texture
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texture->GetTexture());
+	glUniform1i(glGetUniformLocation(particlesProgram, "tex"), 0);
 
-			glm::mat4 projection = camera->GetProjectionMatrix();
+	// Send in quads to vertex shader
+	glUniform3f(glGetUniformLocation(particlesProgram, "quad1"), quad1.x, quad1.y, quad1.z);
+	glUniform3f(glGetUniformLocation(particlesProgram, "quad2"), quad2.x, quad2.y, quad2.z);
 
-			// Send in the projection
-			GLuint projectonLoc = glGetUniformLocation(program, "projection");
-			glUniformMatrix4fv(projectonLoc, 1, GL_FALSE, glm::value_ptr(projection));
+	// Send in the PV
+	GLuint PVLoc = glGetUniformLocation(particlesProgram, "PV");
+	glUniformMatrix4fv(PVLoc, 1, GL_FALSE, glm::value_ptr(PV));
 
-			// Send in the offset
-			GLuint offSetLoc = glGetUniformLocation(program, "offSet");
-			glUniform2fv(offSetLoc, 1, glm::value_ptr(particle.positon));
+	glBindBuffer(GL_ARRAY_BUFFER, VBO); 
+	glBufferData(GL_ARRAY_BUFFER, sizeof(glm::vec3) * particlePositions.size(), &particlePositions[0], GL_STATIC_DRAW);
+	glBindVertexArray(this->VAO);
 
-			// Send in the color
-			GLuint colorLoc = glGetUniformLocation(program, "color");
-			glUniform4fv(colorLoc, 1, glm::value_ptr(particle.color));
+	glDrawArrays(GL_POINTS, 0, numberOfParticles);
+	glBindVertexArray(0);
 
-			glBindVertexArray(this->VAO);
-			glDrawArrays(GL_TRIANGLES, 0, 6);
-			glBindVertexArray(0);
-		}
-	}
-
+	// Reset Blending to standard blend
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDepthMask(GL_TRUE); 
+	glDisable(GL_BLEND); // TODO - this might need removal
 }
 
 void ParticleSystem::Update(float deltaTime, glm::vec2 offSet)
 {
-	// Spawn New Particles
-	for (GLuint i = 0; i < numberOfNewParticles; ++i)
-	{
-		int unusedParticles = GetFirstUnusedParticle();
-		RespawnParticle(particles[unusedParticles], offSet);
+	for (int i = 0; i < numberOfParticles; i++) 
+	{ 
+		particles[i]->Update(deltaTime); 
+		particlePositions[i] = particles[i]->GetPosition(); 
 	}
+}
 
-	// Update Current Particles
-	for (GLuint i = 0; i < numberOfParticles; ++i)
-	{
-		Particle& particle = particles[i];
+void ParticleSystem::PopulateQuadPositions(Camera* camera, glm::vec3& OUT quad1, glm::vec3& OUT quad2)
+{
+	// Get Unit Look Direction
+	glm::vec3 lookDirection = camera->GetCameraLookDirection();
+	lookDirection = glm::normalize(lookDirection);
 
-		// Decrease particle lifetme
-		particle.life -= deltaTime;
+	quad1 = glm::cross(lookDirection, camera->GetCameraUpDirection());
+	quad1 = glm::normalize(quad1);
 
-		// if the particle is still alive
-		if (particle.life > 0.0f)
-		{
-			// Move Particle with it's velocity
-			particle.positon -= particle.velocity * deltaTime;
-
-			// Fade particle out
-			particle.color.a -= deltaTime * 2.5f;
-		}
-	}
+	quad2 = glm::cross(lookDirection, quad1);
+	quad2 = glm::normalize(quad2);
 }
 
 GameObject* ParticleSystem::GetOwner() const
 {
 	return owner;
-}
-
-
-GLuint ParticleSystem::GetFirstUnusedParticle()
-{
-	// Search from the last used particle
-	for (GLuint i = lastUsedParticle; i < numberOfParticles; ++i)
-	{
-		// Find the first dead particle
-		if (particles[i].life <= 0.0f)
-		{
-			lastUsedParticle = i;
-			return i;
-		}
-	}
-
-	// If it's not found do a linear search
-	for (GLuint i = 0; i < lastUsedParticle; ++i)
-	{
-		// Find the first dead particle
-		if (particles[i].life <= 0.0f)
-		{
-			lastUsedParticle = i;
-			return i;
-		}
-	}
-
-	lastUsedParticle = 0;
-	return 0;
-}
-
-void ParticleSystem::RespawnParticle(Particle& particle, glm::vec2 offSet)
-{
-	GLfloat random = ((rand() % 100) - 50) / 10.0f;
-	GLfloat randomColor = 0.5 + ((rand() % 100) / 100.0f);
-
-	// Randomize the spawn positon
-	particle.positon.x = owner->transform.position.x + random;	// TODO add offset to it
-	particle.positon.y = owner->transform.position.y + random;
-	particle.color = glm::vec4(randomColor, randomColor, randomColor, 1.0f);
-	particle.life = 1.0f;
-	particle.velocity = glm::vec2(0.0f, +1.0f);
 }

@@ -1,34 +1,67 @@
 #include "Particle.h"
 #include "ParticleSystem.h"
 #include "GameObject.h"
+#include "Time.h"
+#include <time.h>
 
-Particle::Particle(ParticleSystem* particleSystem)
+Particle::Particle(ParticleSystem* particleSystem, int randomizerID)
 {
+	srand(time(NULL));
+
 	this->particleSystem = particleSystem;
+	this->randomizerID = randomizerID;
 
 	this->origin = particleSystem->GetOwner()->transform.position;
 
 	this->position = this->origin;
-	this->velocity = glm::vec3(0.0f, 1.0f, 0.0f);
+	this->velocity = glm::vec3(
+		0.25f * cos(Time::GetDeltaTime()) + 0.25f * RandomFloat() - 0.125f,
+		2.0f + 0.25f * RandomFloat() - 0.125f,
+		0.25f * sin(Time::GetDeltaTime()) + 0.25f * RandomFloat() - 0.125f);
+
 	this->life = 1.0f;
 }
 
 
 void Particle::Update(float deltaTime)
 {
+	// keep updating the position of the particles
+	this->origin = particleSystem->GetOwner()->transform.position;
+
 	this->velocity.y += -0.2f * deltaTime;
-	this->position += velocity;
+	this->position -= velocity * deltaTime;
 	this->life -= deltaTime;
 
+	// If Particle is dead
 	if (life <= 0.0f)
 	{
+		// Reposition particle
 		this->position = this->origin;
 
-		// TODO Calculate randmized velocity
-		this->velocity = glm::vec3(0.1f, 1.0f, 0.1f);
+		// Calculate the actual velocity - TODO Add Speed
+		this->velocity = glm::vec3(
+			0.25f * sin(randomizerID * deltaTime) + 0.25f * RandomFloat() - 0.125f,
+			1.5f + 0.25f * RandomFloat() - 0.125f,
+			0.25f * cos(randomizerID * deltaTime) + 0.25f * RandomFloat() - 0.125f);
 
+		// Reset particle life
 		this->life = RandomFloat() + 0.125f;
 	}
+}
+
+glm::vec3 Particle::GetPosition() const
+{
+	return position;
+}
+
+float Particle::GetLife() const
+{
+	return life;
+}
+
+void Particle::SetLife(float life)
+{
+	this->life = life;
 }
 
 float Particle::RandomFloat()
