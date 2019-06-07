@@ -9,7 +9,7 @@ ParticleSystem::ParticleSystem(GameObject* owner)
 {
 	this->owner = owner;
 
-	numberOfParticles = 500;
+	numberOfParticles = 4000;
 	numberOfNewParticles = 2;
 	lastUsedParticle = 0;
 
@@ -19,13 +19,15 @@ ParticleSystem::ParticleSystem(GameObject* owner)
 	texture->Initialise();
 
 	// Create the shader program
-	particlesProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/ParticleVertex.vs", "Shaders/ParticleFragment.fs");
+	particlesProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/ParticleVertex.vs", "Shaders/" ,"Shaders/ParticleFragment.fs"); // TODO add geometry shader
 
 	// Populate particles
 	for (GLuint i = 0; i < numberOfParticles; ++i)
 	{
-		particles.push_back(Particle());
+		particlePositions.push_back(glm::vec3());
 	}
+
+
 
 	Initialise();
 }
@@ -143,6 +145,11 @@ void ParticleSystem::Update(float deltaTime, glm::vec2 offSet)
 			particle.color.a -= deltaTime * 2.5f;
 		}
 	}
+}
+
+GameObject* ParticleSystem::GetOwner() const
+{
+	return owner;
 }
 
 

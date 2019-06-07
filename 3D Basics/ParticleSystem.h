@@ -12,15 +12,15 @@ class Camera;
 class GameObject;
 class Texture;
 
-struct Particle
-{
-	glm::vec2 positon, velocity;
-	glm::vec4 color;
-	GLfloat life;
-
-	Particle()
-		: positon(0.0f), velocity(0.0f), color(1.0f), life(0.0f) { }
-};
+//struct Particle
+//{
+//	glm::vec2 positon, velocity;
+//	glm::vec4 color;
+//	GLfloat life;
+//
+//	Particle()
+//		: positon(0.0f), velocity(0.0f), color(1.0f), life(0.0f) { }
+//};
 
 class ParticleSystem
 {
@@ -31,9 +31,10 @@ public:
 
 	virtual void Render(Camera* camera, GLuint program);
 	virtual void Update(float deltaTime, glm::vec2 offset = glm::vec2(0.0f, 0.0f));
+	GameObject* GetOwner() const;
 
 // Functions
-private:
+private:	
 	virtual void Initialise();
 	GLuint GetFirstUnusedParticle();
 	void RespawnParticle(Particle& particle, glm::vec2 offSet);
@@ -50,6 +51,7 @@ private:
 
 	GLuint particlesProgram;
 	std::vector<Particle> particles;
+	std::vector<glm::vec3> particlePositions;
 
 
 	
