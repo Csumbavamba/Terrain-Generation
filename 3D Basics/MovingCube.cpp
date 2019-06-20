@@ -13,7 +13,7 @@ MovingCube::MovingCube(Camera* mainCamera)
 	mesh = new Mesh_Cube(this);
 	particleSystem = new ParticleSystem(this, false);
 
-	speed = 150.0f;
+	speed = 15.0f;
 
 	mesh->GetTexture()->SetTexturePath("Sprites/Rock.png");
 }

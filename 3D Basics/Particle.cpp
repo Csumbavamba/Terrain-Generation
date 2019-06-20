@@ -44,7 +44,7 @@ void Particle::Update(float deltaTime)
 		this->position.x += RandomFloatInRange(-0.2f, 0.2f);
 		this->position.z += RandomFloatInRange(-0.2f, 0.2f);
 
-		// Calculate the actual velocity - TODO Add Speed
+		// Calculate the actual velocity
 		this->velocity = glm::vec3(
 			0.25f * sin(randomizerID * deltaTime) + 0.25f * RandomFloat() - 0.125f,
 			1.5f + 0.25f * RandomFloat() - 0.125f,

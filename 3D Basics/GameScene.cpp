@@ -9,6 +9,7 @@
 #include "TessalatedQuad.h"
 #include "Utility.h"
 #include "ShaderLoader.h"
+#include "GPUFountain.h"
 
 #include <iostream>
 
@@ -26,13 +27,16 @@ GameScene::GameScene()
 	star->SetTerrain(terrain);
 	tessQuad = new TessalatedQuad(mainCamera);
 	tessQuad->SetTerrain(terrain);
+	gpuFountain = new GPUFountain(mainCamera);
+	gpuFountain->SetTerrain(terrain);
 
 	isPostProcessingEnabled = false;
 
 	gameObjects.push_back(terrain);
-	gameObjects.push_back(movingCube);
 	gameObjects.push_back(star);
 	gameObjects.push_back(tessQuad);
+	gameObjects.push_back(movingCube);
+	gameObjects.push_back(gpuFountain);
 	gameObjects.push_back(pauseMenu);
 
 

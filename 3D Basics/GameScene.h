@@ -7,6 +7,7 @@ class Terrain;
 class MovingCube;
 class Star_2D;
 class TessalatedQuad;
+class GPUFountain;
 
 class GameScene :
 	public Scene
@@ -32,6 +33,7 @@ private:
 	MovingCube* movingCube = NULL;
 	Star_2D* star = NULL;
 	TessalatedQuad* tessQuad = NULL;
+	GPUFountain* gpuFountain = NULL;
 
 	// Post Processing
 	GLuint frameBuffer;

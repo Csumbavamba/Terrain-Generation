@@ -7,7 +7,7 @@
 #include "Particle.h"
 #include "Time.h"
 
-#define NUM_PARTICLES 128 * 500
+#define NUM_PARTICLES 128 * 20000
 
 ParticleSystem::ParticleSystem(GameObject* owner, bool onGPU)
 {
@@ -44,8 +44,7 @@ ParticleSystem::ParticleSystem(GameObject* owner, bool onGPU)
 	// Create the shader program
 	particlesProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/ParticleVertex.vs", "Shaders/ParticleGeometry.gs" ,"Shaders/ParticleFragment.fs");
 	GPUParticlesProgram = ShaderLoader::GetInstance()->CreateProgram("Shaders/ParticleVertexGPU.vs", "Shaders/ParticleFragmentGPU.fs");
-
-	
+	computeProgram = ShaderLoader::GetInstance()->CreateComputeProgram("Shaders/ComputeShader.comp");
 }
 
 ParticleSystem::~ParticleSystem()
@@ -154,6 +153,9 @@ void ParticleSystem::Render(Camera* camera, GLuint program)
 	// Get View and Projection matrix
 	glm::mat4 PV = camera->GetPV();
 
+	// Calculate Model Matrix
+	glm::mat4 PVM = PV * modelMatrix;
+
 	// GPU RENDERING
 	if (onGPU)
 	{
@@ -169,11 +171,8 @@ void ParticleSystem::Render(Camera* camera, GLuint program)
 		glUseProgram(GPUParticlesProgram);
 
 		// Send in the PV
-		GLuint PVLoc = glGetUniformLocation(GPUParticlesProgram, "PV");
-		glUniformMatrix4fv(PVLoc, 1, GL_FALSE, glm::value_ptr(PV));
-
-		GLuint DELTALoc = glGetUniformLocation(GPUParticlesProgram, "deltaTime");
-		glUniform1f(DELTALoc, Time::GetDeltaTime());
+		GLuint PVMLoc = glGetUniformLocation(GPUParticlesProgram, "PVM");
+		glUniformMatrix4fv(PVMLoc, 1, GL_FALSE, glm::value_ptr(PVM));
 
 		// Bind Position of buffer as GL_ARRAY_BUFFER
 		glBindBuffer(GL_ARRAY_BUFFER, positionVBO);
@@ -236,6 +235,16 @@ void ParticleSystem::Update(float deltaTime, glm::vec2 offSet)
 			particles[i]->Update(deltaTime);
 			particlePositions[i] = particles[i]->GetPosition();
 		}
+	}
+	// GPU rendering
+	else
+	{
+		glm::mat4 translationMatrix = glm::translate(glm::mat4(), owner->transform.position);
+		glm::mat4 rotationmatrix = owner->transform.CalculateRotationMatrix();
+		glm::mat4 scalingMatrix = glm::scale(glm::mat4(), owner->transform.scale); // TODO add scaling
+
+		// Model																																					
+		modelMatrix = translationMatrix * rotationmatrix * scalingMatrix;
 	}
 }
 

@@ -6,7 +6,7 @@ Fountain::Fountain(Camera* mainCamera)
 {
 	this->camera = mainCamera;
 
-	particleSystem = new ParticleSystem(this, true);
+	particleSystem = new ParticleSystem(this, false);
 }
 
 Fountain::~Fountain()

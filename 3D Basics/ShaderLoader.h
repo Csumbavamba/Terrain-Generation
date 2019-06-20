@@ -25,6 +25,8 @@ public:
 		const char* TessalationEvaluationShaderFileName,
 		const char* FragmentShaderFilename);
 
+	GLuint CreateComputeProgram(const char* ComputeShaderFileName);
+
 	static void ShutDown();
 
 // Functions
@@ -51,6 +53,7 @@ private:
 	std::map<std::string, GLuint> savedTessEvaluationShaders;
 	std::map<std::string, GLuint> savedFragmentShaders;
 	std::map<std::string, GLuint> savedGeometryShaders;
+	std::map<std::string, GLuint> savedComputeShaders;
 	std::map<std::string, GLuint> savedPrograms;
 
 

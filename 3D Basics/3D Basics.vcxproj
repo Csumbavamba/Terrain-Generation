@@ -150,6 +150,7 @@
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Geometry_Star.cpp" />
+    <ClCompile Include="GPUFountain.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MovingCube.cpp" />
     <ClCompile Include="Particle.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Geometry_Star.h" />
+    <ClInclude Include="GPUFountain.h" />
     <ClInclude Include="MovingCube.h" />
     <ClInclude Include="Particle.h" />
     <ClInclude Include="ParticleSystem.h" />

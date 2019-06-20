@@ -50,6 +50,7 @@ private:
 
 	GLuint positionVBO, velocityVBO, initialVelocityVBO, particleVAO; // Particle VAO is not used, but needed to avoid errors
 	GLuint computeProgram, GPUParticlesProgram;
+	glm::mat4 modelMatrix;
 
 
 	

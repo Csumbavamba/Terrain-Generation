@@ -145,6 +145,7 @@
     <ClCompile Include="Fountain.cpp">
       <Filter>Source\3D Game</Filter>
     </ClCompile>
+    <ClCompile Include="GPUFountain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -291,6 +292,7 @@
     <ClInclude Include="Fountain.h">
       <Filter>Header Files\3D Game</Filter>
     </ClInclude>
+    <ClInclude Include="GPUFountain.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">

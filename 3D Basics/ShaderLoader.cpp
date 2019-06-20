@@ -412,6 +412,73 @@ GLuint ShaderLoader::CreateProgram(const char* VertexShaderFilename,
 	return program;
 }
 
+GLuint ShaderLoader::CreateComputeProgram(const char* ComputeShaderFileName)
+{
+	GLuint program;
+	GLuint computeShader;
+
+	std::string computeShaderCode;
+	
+	std::map<std::string, GLuint>::iterator programIterator;
+	std::map<std::string, GLuint>::iterator computeShaderIterator;
+
+	std::string programName = ComputeShaderFileName;
+
+	// Try to find the program
+	programIterator = savedPrograms.find(programName);
+
+	// If the program doesn't exits - Create it
+	if (programIterator == savedPrograms.end())
+	{
+		// Try to find the shader
+		computeShaderIterator = savedComputeShaders.find(programName);
+
+		// If the program doesn't exist - Create it
+		if (computeShaderIterator == savedComputeShaders.end())
+		{
+			computeShaderCode = ReadShader(ComputeShaderFileName);
+			computeShader = CreateShader(GL_COMPUTE_SHADER, computeShaderCode, "compute shader");
+			savedComputeShaders[ComputeShaderFileName] = computeShader;
+		}
+		// Otherwise load it
+		else
+		{
+			computeShader = computeShaderIterator->second;
+		}
+
+		// Create program
+		int link_result = 0;
+		//create the program handle, attatch the shaders and link it
+		program = glCreateProgram();
+		glAttachShader(program, computeShader);
+
+		glLinkProgram(program);
+		glGetProgramiv(program, GL_LINK_STATUS, &link_result);
+
+		//check for link errors
+		if (link_result == GL_FALSE)
+		{
+
+			int info_log_length = 0;
+			glGetProgramiv(program, GL_INFO_LOG_LENGTH, &info_log_length);
+			std::vector<char> program_log(info_log_length);
+			glGetProgramInfoLog(program, info_log_length, NULL, &program_log[0]);
+			std::cout << "Shader Loader : LINK ERROR" << std::endl << &program_log[0] << std::endl;
+			return 0;
+		}
+
+		savedPrograms[programName] = program;
+	}
+	// Otherwise load the program
+	else
+	{
+		// Load program
+		program = programIterator->second;
+	}
+
+	return program;
+}
+
 void ShaderLoader::ShutDown()
 {
 	delete instance;
